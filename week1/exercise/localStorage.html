@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Experience Journal</title>
+
+    <!-- using tailwind css -->
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
+    <script>
+        const loadExperience = ()=> {
+        var experienceName = document.getElementById('name').value
+        var experience = localStorage.getItem(experienceName)
+        document.getElementById('experience_editor').value = experience
+        }
+        const saveExperience = ()=> {
+        var experienceName = document.getElementById('name').value
+        var experience = document.getElementById('experience_editor').value
+        localStorage.setItem(experienceName,experience)  // this data is saved with key and value,  with the value we can retrieve the data
+        }
+        const displayExperience = ()=> {
+        var experienceName = document.getElementById('name').value
+        localStorage.getItem(experienceName)
+        }
+
+        //  to clean all the data saved
+
+        const clearExperiences = () =>{
+            localStorage.clear()
+        }
+
+    </script>
+
+</head>
+<body>
+    <main >
+        <h1 class=" ml-2 m-auto mb-8 text-red-400 font-bold text-4xl   "> Experiences Editor </h1>
+         <p class="ml-2 text-lg mr-4 inline">Experience Name </p>  <input placeholder="Experience Name" class="  bg-black text-white rounded-lg w-auto h-10  pl-3  " type="text" id="name">
+        <section class="mt-10">
+            <button class="bg-black text-white ml-2 rounded-md w-auto pl-4 pr-4 text-lg h-10 " onclick="loadExperience()"> Find and Edit it </button>
+            <button class="bg-black text-white rounded-md w-auto pl-4 pr-4 text-lg h-10 " onclick="saveExperience()"> Save it </button>
+            <button class="bg-black text-white rounded-md w-auto pl-4 pr-4 text-lg h-10 " onclick="displayExperience()"> Display it</button>
+        </section>
+        <textarea class=" mt-5 text-1.5xl block bg-black ml-2 mt-10 mb-10 text-white rounded-md pl-3 " id="experience_editor" cols="49" rows="6" placeholder="Write here your experience"></textarea>
+        
+        <button class="bg-black text-white ml-2 rounded-md w-auto pl-4 pr-4 text-lg h-10 " onclick="clearExperiences()"> Clear All</button>
+    </main>
+    
+</body>
+</html>
