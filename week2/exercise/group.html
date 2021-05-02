@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>enter a integer number</p>
+    <input type="number"  id="text">
+    <select name="calc" id="calc">
+        <option  value="sum">sum</option>
+        <option  value="minus">minus</option>
+        <option  value="multiply">multiply</option>
+        <option  value="divide">divide</option>
+    </select>
+    <input type="number"  id="text2">
+    <button onclick="display()"> sum ALL </button>
+    <button onclick="compute()"> compute  </button>
+    <div id="display">
+
+    </div>
+
+
+    
+</body>
+<script>
+
+
+
+const sum = (number1,number2)=>{
+        let display =number1 +number2
+        document.getElementById('display').textContent = display
+
+    }
+const minus = (number1,number2)=>{
+        let display =number1 -number2
+        document.getElementById('display').textContent = display
+
+    }
+const multiply = (number1,number2)=>{
+        let display =number1 * number2
+        document.getElementById('display').textContent = display
+
+    }
+const divide = (number1,number2)=>{
+    if (number2!= 0){
+
+        let display =number1 / number2
+        document.getElementById('display').textContent = display
+    }else{
+        document.getElementById('display').textContent = 'Do not divide by 0'
+
+
+    }
+
+    }
+
+    const sumAll = (number)=>{
+        let sum =0
+        for( i=1 ; i<=number; i++){
+            sum += i
+        }
+        return sum
+    }
+    const display = ()=>{
+        let input = document.getElementById('text').value
+        
+        let number = parseInt(input)
+        let display
+        if (number){
+            display = sumAll(number)
+            
+            
+        }else{
+            display = 'That is not a number'
+        }
+        document.getElementById('display').textContent = display
+        
+    }
+const compute = ()=>{
+    let number1 = parseInt(document.getElementById('text').value)
+    let calc = document.getElementById('calc').value
+    let number2 = parseInt(document.getElementById('text2').value)
+    console.log(calc)
+    if (calc =='sum'){
+        sum(number1,number2)
+    }else if(calc =='minus'){
+        minus(number1,number2)
+        
+    } else if (calc =='multiply'){
+        multiply(number1,number2)
+        
+    }else{
+        divide(number1,number2)
+
+    }
+}
+</script>
+</html>
