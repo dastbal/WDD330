@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Week 3 notes</title>
+</head>
+<body>
+    <main>
+        <div class="exercices">
+            <h3>  <a href="./exercise/quiz/index.html"> Quiz NinJa</a> </h3>
+
+        </div>
+        <div class="notes">
+            <h2> chapter 5 Objects</h2>
+            <h3>Regular Expressions</h3>
+            <p>Creating Regular Expressions <br>
+                There are two ways to create a regular expression. The first, and preferred way, is to use the literal notation of writing the regular expression between forward slashes that we’ve already seen:
+                <br>
+                const pattern = /[a-zA-Z]+ing$/;</p>
+                <p>Alternatively, you can create a new instance of the RegExp object using the new operator and a constructor function:
+<br>
+                    const pattern = new RegExp('[a-zA-Z]+ing');</p>
+                    <p>You can use the <span>test()</span> method to see if a string (passed to the method as a parameter) matches the regular expression pattern. It returns true if the pattern is in the string, and false if it isn’t.  <br>
+                        pattern.test('joke'); <br>
+                        << false<br><br>
+                        
+                        pattern.test('joking');<br>
+                        << true<br><br>
+                        
+                        pattern.test('jokingly');<br>
+                        << false</p>
+                        <p>
+                            The <span>exec() </span> method works in the same way as the test() method, but instead of returning true or false, it returns an array containing the first match found, or null if there aren’t any matches: <br>
+
+pattern.exec('joke');  <br>
+<< null  <br> <br>
+
+pattern.exec('joking'); <br>
+<< [ 'joking', index: 0, input: 'joking' ]  <br>
+                
+                        </p>
+                        <h2>Chapter 6: The Document Object Model</h2>
+                        <h3>What's With the Extra Text Nodes?</h3>
+                        <p>
+                            There appear to be some extra #text nodes in this diagram, even in places where there isn't any text. This is because the DOM also stores any whitespace that is in the HTML document as text nodes.</p>
+                            <h3>nodeType property</h3>
+                            <p>For example, we can use the nodeType property to find out what type of node it is: <br>
+
+                                body.nodeType;
+                                << 1
+                                       <br>        
+                                All nodes have a numerical code to signify what type they are. These are summmarized in the table below.
+                                <br>
+                                
+                                Code	Type
+                                <ul>
+                                    <li>                               1	element
+                                    </li>
+                                    <li>2	attribute</li>
+                                    <li>
+
+                                        3	text
+                                    </li>
+                                    <li>
+
+                                        8	comment
+                                    </li>
+                                    <li>
+                                        9	body
+
+                                    </li>
+                                </ul>
+                               
+                                There are other types not covered in the table, but these aren’t used in HTML documents. As we can see from the table, a code of 1 confirms that body is an element node.
+                                
+                                We can also use the nodeName property to find the name of the element:
+                                
+                                body.nodeName;
+                                << "BODY"
+                                                </p>
+                                                <p>
+                                                    Not Actually Arrays
+Node lists are array-like objects, but they are not arrays. You can access each item using index notation. For example, document.images[0] will return the first image in the node list of all the images in the document.
+
+They also have a length property, which can be used to iterate through every element using a for loop, like so:<br>
+
+for (let i=0 ; i < document.images.length ; i++) {<br>
+
+// do something with each image using document.images[i]
+
+}<br>
+                        
+Node lists don’t have any other array methods such as slice, splice and join.
+
+ES6 makes it very easy to turn a node list into an array, however. You can either use the Array.from() method: <br><br>
+
+const imageArray = Array.from(document.images);<br><br>
+                        
+Or you can use the spread operator:<br> <br>
+
+const imageArray = [...document.images];<br><br>
+                        
+Once the node list has been turned into an array, you can use all the array methods on it.
+                                                </p>
+                                                <p>some attribute names such as class and for are reserved keywords in JavaScript, so we need to use className and htmlFor instead.</p>
+                <h3>className</h3>
+                <p>Be Careful Updating className <br>
+                    Changing the className property of an element by assignment will overwrite all other classes that have already been set on the element. <br>
+                    
+                    This problem can be avoided by using the classList property instead.</p>
+                <h3> classList</h3>
+                <p>wonderWoman.classList.add('warrior'); <br><br>
+                                    
+                    wonderWoman.className; <br>
+                    << "hero warrior"<br><br>
+                                    
+                    
+                    wonderWoman.classList.remove('warrior');<br>
+                                    
+                    The toggle method is a particularly useful method that will add a class if an element doesn’t have it already, and remove the class if it does have it. It returns true if the class was added and false if it was removed. For example:<br><br>
+                    
+                    wonderWoman.classList.toggle('hero'); // will remove the 'hero' class<br>
+                    << false<br>
+                    
+                    wonderWoman.classList.toggle('sport'); // will add the 'hero' class back<br>
+                    << true<br>
+                                    
+                    The contains method will check to see if an element has a particular class:<br>
+                    
+                    wonderWoman.classList.contains('hero');<br>
+                    << true<br>
+                    
+                    wonderWoman.classList.contains('villain');<br>
+                    << false</p>
+
+                    <br>
+                    <p>function addClass(element,newClass){ <br>
+                        if (element.className) { <br>
+                            element.className = element.className + ' ' + newClass; <br>
+                        } else { <br>
+                            element.className = newClass; <br>
+                        }
+                        return element.className;<br>
+                        }</p>
+                        <h3>Styled</h3>
+                        <p>CAMEL CASE PROPERTIES
+                            Any CSS property names that are separated by dashes must be written in camelCase notation, so the dash is removed and the next letter is capitalized because dashes are not legal characters in property names. <br>
+                            
+                            For example, the CSS property background-color becomes backgroundColor. We can change the color of the superman background to green using this code:<br> <br>
+                            
+                            superman.style.backgroundColor = 'blue'; <br>
+                            << "blue"</p>
+                            <p>Alternatively, the bracket notation that we saw in chapter 5 can also be used, meaning that CSS properties can be provided as a string and don't need the camelCase notation: <br> <br>
+
+                                superman.style['background color'] = 'blue'; <br>
+                                << "blue"</p>
+                                <h3>Checking Styles Properties</h3>
+                                <p>There is a function called getComputedStyle() that will retrieve all the style information of an element that is given as a parameter. This is a read-only property, so is only used for finding out information about the style of an element. <br>
+
+                                    For example, if you wanted all the styles applied to the superman element, you could use the following: <br>
+                                    
+                                    getComputedStyle(superman); <br> <br>
+                                    getComputedStyle(superman).getPropertyCSSValue('color').cssText; <br>
+                                    << "rgb(0, 0, 0)" br
+                                                    
+                                    This tells us that the color of the text is rgb(0, 0, 0), which is black. br
+                                    
+                                    You can read more on the Mozilla Developer Network about the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle">getComputedStyle() </a>   function and about CSSStyleDeclaration objects.</p>
+                                    <h2>Events</h2>
+                                    <h3><a href="./exercise/events.html">Example Code</a></h3>
+        
+                        </div>
+           
+        <div class="questions">
+            <h2>Questions</h2>
+        </div>
+
+    </main>
+
+    
+</body>
+</html>

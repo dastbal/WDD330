@@ -21,7 +21,7 @@ const start = (quiz)=>{
 }
 
 const check = (response,a)=>{
-    if (response.toLowerCase() === a.toLocaleLowerCase()){
+    if (response.toLowerCase() === a.toLowerCase()){
         alert('Correct')
         return score += 1
     }
