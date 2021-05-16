@@ -5,6 +5,9 @@
         .summary{
             display: none;
         }
+        h2{
+            color: blue;
+        }
 
     </style>
     <meta charset="UTF-8">
@@ -135,11 +138,41 @@ By convention, the names of constructor functions or class declarations are capi
                             <br>
                             Composition over inheritance is a design pattern where objects are composed from 'building-block' objects, rather than inheriting all their properties and methods from a parent class.</p>
         </div>
-        <div class="questions">
-            <h2>Questions</h2>
-        </div>
+        <h2>Chapter 15: Modern JavaScript Development</h2>
+        <h3>ADVANTAGES AND DISADVANTAGES OF LIBRARIES
 
-        <h2><a href="./exercise/group.html">Group activity exercises</a></h2>
+        </h3>
+        <p>
+            There are some disadvantages to using libraries, however. You need to include the code for the library as well as your own code. This increases the amount of code that needs to be downloaded by a website, which in some cases can cause performance issues. Thankfully, most modern libraries are relatively small once server-side optimizations are made (such as gzip compression), minimizing any latency issues. <br> Another problem with libraries is that they might fail to implement the functionality in the precise way that you want it to perform. This might not be a problem, but sometimes you’ll have to get your hands dirty and write your own functions in order to achieve the functionality for which you are looking.
+
+        </p>
+        <span>It’s also advisable to consider that the popularity of a particular library can be 'here today, gone tomorrow'</span>
+        
+        <h3>MODULES</h3><p>If there are lots of values and functions that need to be imported, then everything in a module file can be imported using the wildcard symbol * along with a namespace for the imported values and functions using the following notation: <br>
+
+            import * as stats from './stats.js';
+            <br> <br>
+                        
+            This will then import all the functions from the stats.js module and they’ll be given a namespace of stats. So, the mean function could be used as follows:  <br> <br>
+            
+            stats.mean([2,6,10]);
+
+        </p>
+        <p>Default Exports
+            Default exports refer to a single variable, function or class in a module that can be imported without having to be explicitly named. The syntax for default exports is purposely easier to read because this is how modules were designed to be used.  <br>
+            
+            The following example demonstrates how this would be done for a variable: <br> <br>
+            
+            const PI = 3.145926;<br> <br>
+            
+            export default PI;</p>
+            <p>Don't Use More Than One Default Export <br>
+                Having more than one default export will result in a syntax error.</p>
+        <!-- <div class="questions">
+            <h2>Questions</h2>
+        </div> -->
+
+        <!-- <h2><a href="./exercise/group.html">Group activity exercises</a></h2> -->
     </main>
 
     
