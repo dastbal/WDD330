@@ -1,66 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+        .summary{
+            display: none;
+        }
+
+    </style>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Week 2 notes</title>
+    <title>Week 4 notes</title>
 </head>
 <body>
     <main>
         <div class="exercices">
             <h3>  <a href="./exercise/quiz/index.html"> Quiz NinJa</a> </h3>
-            <h3>  <a href="./exercise/eloquent/sumrange.html"> Sum of a range</a> </h3>
+            <h2>  <a href="./exercise/form/search.html"> form</a> </h2>
 
         </div>
         <div class="notes">
-            <h2>Notes </h2>
-            <h3>JavaScript: Novice to Ninja</h3>
-            <ul>
-                <li>HEXADECIMAL NUMBERS
-                    If a number starts with a 0x, it is considered to be in hexadecimal (base 16) notation:
-                    
-                    0xAF; // A represents 10, F represents 15
-                    << 175
-                             </li>
-                <li>EXPONENTIAL NOTATION
-                                Numbers can also be represented in exponential notation, which is shorthand for "multiply by 10 to the power of" (you may have heard this referred to as "scientific notation" or "standard form"). Here are some examples:
-                                
-                                1e6; // means 1 multiplied by 10 to the power 6 (a million)
-                                << 1000000
-                                
-                                2E3; // 2 multiplied by 10^3 (two thousand)
-                                << 2000
-                </li>
-                <li>
-                    Number Methods
-Numbers also have some built-in methods, although you need to be careful when using the dot notation with number literals that are integers because JavaScript will confuse the dot with a decimal point. 
+            <h1>Notes from JavaScript: Novice to Ninja, 2nd Edition </h1>
+            <h2>Chapter 8: Forms</h2>
+            <h3>
+                ACCESSING FORM ELEMENTS
+            </h3>
+            <p>
+                The legacy DOM had a useful property called document.forms that returns an HTML collection of all the forms in the document in the order they appear in the markup. Even though there is only one form in our example, a collection will still be returned, so we have to use index notation to return the first (and only) form object, like so:
+                <br>
+                const form = document.forms[0];
+
+            </p>
+            <p>
+                A form object also has a method called elements that returns an HTML collection of all the elements contained in the form. In this case the form contains two controls: an input element and a button element:
+<br>
+const [input,button] = form.elements;
+            </p>
+            <p> we can use JavaScript to intercept the form before it’s sent by adding a submit event listener. 
+            </p>
+            <h2>Validate with Javascript  on the front</h2>
+            <p>JavaScript validation should be used to enhance the user experience when filling in a form by giving feedback about any errors before it’s submitted. This should then be backed up with more validation performed on the server before the data is eventually saved to a database. Having said that, it’s still useful to validate on the client side even if the data will be validated again on the server side. This is because it will ensure that more valid data is sent to the server, which helps to cut down the number of HTTP requests required to send the form back and forward from the server to be corrected.</p>
+
+            <h2>Chapter 12: Object-Oriented Programming in JavaScript</h2>
+            <h3>
                 
-Use two dots:
-<br>
+                Capitalizing Constructor Functions
+            </h3>
+By convention, the names of constructor functions or class declarations are capitalized, which is the convention used for classes in class-based programming languages.
+            <p>When Parentheses Aren’t Required <br>
+                The parentheses are not required when instantiating a new object using a constructor function. The following code would also achieve the same result:
+                <br><br>
+                const redDice = new Dice;<br> <br>
+                                            
+                The parentheses are required, however, if any default arguments need to be provided.
+                <br>
+                For example, if we want to create another Dice object with four sides, we would have to add 4 as an argument, like so:
+                <br><br>
+                const whiteDice = new Dice(4);</p>
+                <h3>
+                    Static Methods
 
-5..toExponential();
->> "5e+0"
+                </h3>
+                <p>
 
-<br>
+                    The static keyword can be used in class declarations to create a static method. These are sometimes called class methods in other programming languages. A static method is called by the class directly rather than by instances of the class.
+                </p>
+                <p>
+                    Static methods are not available to instances of the class.
+                </p>
+                <h3>Public and Private Methods
+                    </h3>
+                    <p>
+                        By default, an object’s methods are public in JavaScript. Methods and properties are said to be public because they can be queried directly and changed by assignment. The dynamic nature of the language means that an object’s properties and methods can be changed after it has been created.
 
-Put a space before the dot:
-<br>
+                    </p>
+                    <h3>Polymorphism</h3>
+                    <p>
+                        The concept of polymorphism means that different objects can have the same method, but implement it in different ways. The Object.prototype object has a toString() method that is shared by all objects. This means every object created in JavaScript will have a toString() method. Polymorphism means that objects are able to override this method with a more specific implementation. So although every object has a toString() method, the way it’s implemented can vary between different objects. For example, calling it on an array object will return each value in a comma-separated string:
 
-5 .toExponential(); >> "5e+0"
-<br>
-Assign the number to a constant:
+                    </p>
+                    <h3>Borrowing Methods from Prototypes</h3>
+                    <p>
+                        It’s possible to borrow methods from objects without having to inherit all their properties and methods. This is done by making a reference to the function that you want to borrow (that is, without parentheses so that it isn’t invoked).
+                        
+                        For example, the batman object doesn’t have any of the superpower methods that the superman object has, but we can create a reference to them that can then be used by another object. For example, we can create a fly() function by referencing the superman object’s fly method:
+                        <br>
+                        const fly = superman.fly;
+                                    <<
+                                        <br> 
+                        This method can now be called on another object using the call method that all functions have, and that we learned about in Chapter 11:
+                        
+                        fly.call(batman); <br><br>
+                        << Up, up and away! Batman soars through the air!
+                    </p>
+                    <p>The call() method takes the object that the function is to be applied to as its first argument, then the usual arguments come afterwards.
 
-const number = 5;
->> 5
+                        The method can also be borrowed directly from an array literal, like so: <br>
+                        
+                        [].slice.call(arguments, 1, 3)</p>
 
-number.toExponential();
-<br>
->> "5e+0"
-                </li>
-            </ul>
-            
+                        <h4>Chapter Summary </h4>
+                        <button id="btn"> show...</button>
+                        <p id="summary" class="summary"> 
+                            Object-oriented programming (OOP) is a way of programming that uses objects that encapsulate their own properties and methods.
+                            <br>
+                            The main concepts of OOP are encapsulation, polymorphism and inheritance.
+                            <br>
+                            Constructor functions can be used to create instances of objects.
+                            <br>
+                            ES6 introduced class declarations that use the class keyword. These can be used in place of constructor functions.
+                            <br>
+                            Inside a constructor function or class declaration, the keyword this refers to the object returned by the function.
+                            <br>
+                            All instances of a class or constructor function inherit all the properties and methods of its prototype.
+                            <br>
+                            The prototype is live, so new properties and methods can be added to existing instances.
+                            <br>
+                            The prototype chain is used to find an available method. If an object lacks a method, JavaScript will check whether its prototype has the method. If not, it will check that function’s prototype until it finds the method or reaches the Object constructor function.
+                            <br>
+                            Private properties and methods can be created by defining variables using const and defining a function inside a constructor function. These can be made public using getter and setter functions.
+                            <br>
+                            Monkey-patching is the process of adding methods to built-in objects by augmenting their prototypes. This should be done with caution as it can cause unexpected behavior in the way built-in objects work.
+                            <br>
+                            A mixin method can be used to add properties and methods from other objects without creating an inheritance chain.
+                            <br>
+                            Methods can be chained together and called in sequence if they return a reference to this.
+                            <br>
+                            Polymorphism allows objects to override shared methods with a more specific implementation.
+                            <br>
+                            The value of this is not retained inside nested functions, which can cause errors. This can be worked around by using that = this, using the bind(this) method and using arrow functions.
+                            <br>
+                            Methods can be borrowed from other objects.
+                            <br>
+                            Composition over inheritance is a design pattern where objects are composed from 'building-block' objects, rather than inheriting all their properties and methods from a parent class.</p>
         </div>
         <div class="questions">
             <h2>Questions</h2>
@@ -71,4 +144,21 @@ number.toExponential();
 
     
 </body>
+                        <script>
+                            let btn = document.getElementById('btn')
+                            let none= document.getElementById('summary')
+                            const show = ()=>{
+                                none.classList.toggle('summary')
+                                if( none.classList == ''){
+                                    btn.textContent = 'Hide'
+                                }else{
+                                    btn.textContent = 'Show'
+
+                                }
+
+                            }
+                            btn.addEventListener('click',show, false)
+                            
+                            
+                        </script>
 </html>
