@@ -34,6 +34,7 @@ const hikeList = [
         'Take Highway 20 north to Ashton. Turn right into the town and continue through. Follow that road for a few miles then turn left again onto the Cave Falls road. Drive to until you see the sign for Bechler Meadows on the left. Turn there. There is a parking area at the trailhead.'
     }
 ];
+
 // Hike Model
 export default class HikeModel {
   constructor() {
@@ -41,9 +42,13 @@ export default class HikeModel {
   }
   getAllHikes() {
     // should return a list of all the hikes.
+    return hikeList;
   }
   getHikeByName(hikeName) {
     // filter the hikes for the record identified by hikeName and return it
-    return ;
+    return this.getAllHikes().find(hike=>{
+      hike.name == hikeName
+    })
+    
   }
 }

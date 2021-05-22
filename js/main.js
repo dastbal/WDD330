@@ -19,6 +19,10 @@ const links =[
         label :" Week 5 notes",
         url : "./week5/index.html"
     },
+    {
+        label :" Midterm",
+        url : "./week6/index.html"
+    },
 ]
 
 
