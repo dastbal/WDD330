@@ -1,15 +1,5 @@
 const hikeList = [
-    {
-      name: 'Bechler Falls',
-      imgSrc: 'falls.jpg',
-      imgAlt: 'Image of Bechler Falls',
-      distance: '3 miles',
-      difficulty: 'Easy',
-      description:
-        'Beautiful short hike along the Bechler river to Bechler Falls',
-      directions:
-        'Take Highway 20 north to Ashton. Turn right into the town and continue through. Follow that road for a few miles then turn left again onto the Cave Falls road.Drive to the end of the Cave Falls road. There is a parking area at the trailhead.'
-    },
+    
     {
       name: 'Samanes',
       imgSrc: 'samanes.jpg',
@@ -21,6 +11,17 @@ const hikeList = [
       directions:
         'In the north of Guayaquil city front the Samanes Park'
     },
+    {
+        name: 'Bechler Falls',
+        imgSrc: 'falls.jpg',
+        imgAlt: 'Image of Bechler Falls',
+        distance: '3 miles',
+        difficulty: 'Easy',
+        description:
+          'Beautiful short hike along the Bechler river to Bechler Falls',
+        directions:
+          'Take Highway 20 north to Ashton. Turn right into the town and continue through. Follow that road for a few miles then turn left again onto the Cave Falls road.Drive to the end of the Cave Falls road. There is a parking area at the trailhead.'
+      },
     {
       name: 'Teton Canyon',
       imgSrc: 'falls.jpg',
@@ -74,6 +75,7 @@ export default class Hikes{
         this.parentElement.innerHTML= '';
         this.parentElement.appendChild(renderOneHikeFull(hike));
         this.backBtn.classList.remove('hidden');
+        this.parentElement.classList.toggle('x');
         
 
 
@@ -90,10 +92,13 @@ export default class Hikes{
     builBackBtn(){
         const btn = document.createElement('button');
         btn.innerHTML = '&lt;- All Hikes';
+        btn.classList.add('btn-style')
         btn.addEventListener('click', () => {
           this.showHikeList();
+          this.parentElement.classList.toggle('x');
         });
         btn.classList.add('hidden');
+        this.parentElement.classList.toggle('x');
         this.parentElement.before(btn);
         return btn;
         
