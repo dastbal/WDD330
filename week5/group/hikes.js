@@ -44,7 +44,7 @@ const hikeList = [
     }
   ];
   
-  const imgBasePath = '//dastbal.github.io/wdd330/week5/group/images/';
+  const imgBasePath = 'https://dastbal.github.io/WDD330/week5/group/images/';
 
 export default class Hikes{
     constructor(Id){

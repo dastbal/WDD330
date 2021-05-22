@@ -13,7 +13,7 @@
         margin-bottom: -0.5em;
       }
       img {
-        max-width: 100%;
+        max-width: 40%;
       }
       .hidden {
         display: none;
@@ -30,6 +30,13 @@
         text-align: center;
         background-color: burlywood;
         margin-bottom: 0.5em;
+      }
+      .hikeStyles li {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .hikeStyles li h2 {
+        width: 100%;
       }
 
       .light {
