@@ -1,0 +1,1 @@
+import HikesController from  './HikesController';

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .add{
+            display: none;
+        }
+
+        h2{
+            color: blue;
+        }
+
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Week 4 notes</title>
+</head>
+<body>
+    <main>
+        <div class="exercices">
+            
+
+        </div>
+        <div class="notes">
+            <h1>Notes from JavaScript: Novice to Ninja, 2nd Edition </h1>
+            <h2>Chapter 10: Testing and Debugging</h2>
+            <p> <b>Tip</b> <br> A ninja programmer should ensure that the code they write fails loudly in development so any errors can be identified and fixed quickly. In production, a ninja programmer should try to make the code fail gracefully (although not completely silently ― we still need to know there’s an error), so the user experience is not affected, if possible. This is achieved by making sure exceptions are caught and dealt with, and code is tested rigorously.</p>
+            <h3>
+
+                Error Objects
+            </h3>
+            <p>
+
+                An error object can be created by the host environment when an exception occurs, or it can be created in the code using a constructor function, like so:
+            </p> 
+
+<p>
+
+    
+    const error = new Error('Oops, something went wrong'); <br>
+    
+    There are seven more error objects used for specific errors:  <br>
+    <ol>
+        <li>
+
+            
+            EvalError is not used in the current ECMAScript specification and only retained for backwards compatibility. It was used to identify errors when using the global eval() function.
+        </li>
+        <li>
+
+            
+            RangeError is thrown when a number is outside an allowable range of values.
+        </li>
+        <li>
+            
+            
+            ReferenceError is thrown when a reference is made to an item that doesn’t exist. For example, calling a function that hasn't been defined.
+        </li>
+        <li>
+            
+            
+            SyntaxError is thrown when there’s an error in the code’s syntax.
+        </li>
+        <li>
+            
+            
+            TypeError is thrown when there’s an error in the type of value used; for example, a string is used when a number is expected.
+        </li>
+
+<li>
+            
+    URIError is thrown when there’s a problem encoding or decoding the URI.
+</li>
+<li>
+            
+    InternalError is a non-standard error that is thrown when an error occurs in the JavaScript engine. A common cause of this too much recursion.
+</li>
+
+</ol>
+These error objects can also be used as constructors to create custom error objects: <br>
+
+const error = new TypeError('You need to use numbers in this function');
+</p> 
+            
+<h3>
+    Exception Handling
+</h3>
+<p>A  <span>finally</span>  block can be added after a catch block. This will always be executed after the try or catch block, regardless of whether an exception occurred or not. It is useful if you want some code to run in both cases.</p>
+<h3>Tests
+</h3>
+    <p>
+
+        Testing is an important part of programming that can often be overlooked. Writing good tests means your code will be less brittle as it develops, and any errors will be identified early on.
+        
+        A test can simply be a function that tests a piece of code runs as it should.
+    </p>
+    <h3>
+
+        
+        
+        TEST-DRIVEN DEVELOPMENT
+    </h3>
+        <p>
+            Test-driven development(TDD) is the process of writing tests before any actual code. Obviously these tests will initially fail, because there is no code to test. The next step is to write some code to make the tests pass. After this, the code is refactored to make it faster, more readable, and remove any repetition. The code is continually tested at each stage to make sure it continues to work. This process should be followed in small piecemeal chunks every time a new feature is implemented, resulting in the following workflow: <br>
+            
+            Write tests (that initially fail)<br>
+            
+            Write code to pass the tests
+            <br>
+            Refactor the code<br>
+            
+            Test refactored code<br>
+            
+            Write more tests for new features<br>
+            
+            This is often referred to as the “red-green-refactor” cycle of TDD, as failing tests usually show up as red, and tests that pass show as green.
+            <br>
+            <h4><a href="./exercise/test/squareRoot.test.js">Jest exercise</a></h4>
+
+        </p>
+            
+            <h4>Chapter Summary </h4>
+                        <button id="btn" >show</button>
+                        <div  id="summary" class="add">
+
+                            
+                            
+                            
+                            
+                            <ul>
+                                <li>
+                                    
+                                    
+                                    Bugs are unavoidable in code, and it’s best to find them early rather than later.
+                                </li>
+                                <li>
+                                    
+                                    
+                                    
+                                    JavaScript can be put into strict mode using the string "use strict". This can be used in a whole file or just a single function.
+                                </li>
+                                <li>
+
+                                    
+                                    
+                                    Linting tools can be used to ensure your code follows good practice and conventions.
+                                </li>
+                                <li>
+                                    
+                                    
+                                    
+                                    Feature detection can check whether a method is supported before calling it, helping to avoid an exception being thrown.
+                                </li>
+                                <li>
+                                    
+    
+                                    
+                                    The console and browser’s built-in debugging tool can be used to interactively find and fix bugs in code.
+                                </li>
+<li>
+    
+    
+    
+    Exceptions can be thrown using the throw statement.
+</li>
+<li>
+    
+    
+    
+    An error object is created when an exception occurs.
+</li>
+<li>
+    
+    
+    
+    Any code placed inside a try block will pass any error objects to a catch block when an exception occurs. Any code inside a finally block will run if an exception does or does not occur.
+</li>
+<li>
+
+    
+    
+    Test-driven development is the practice of writing tests that fail, then writing the code that passes the test, then refactoring the code every time a new feature is implemented.
+</li>
+<li>
+    
+    
+    
+    The Jest framework can be used to test your code.
+</li>
+
+
+
+</ul>
+
+</div>
+
+<h2> Chapter : 8 BUGS AND ERRORS </h2>
+<h3> Types
+
+</h3>
+<p>When the types of a program are known, it’s possible for the computer to check them for you, pointing out mistakes before the program is run. 
+
+</p>
+
+                           
+</div>
+
+<!-- <div class="questions">
+    <h2>Questions</h2>
+</div> -->
+
+<h2><a href="./group/index.html">Group activity exercises</a></h2> 
+</main>
+
+
+</body>
+                        <script>
+                            let btn = document.getElementById('btn')
+                            let none= document.getElementById('summary')
+                            const show = ()=>{
+                                none.classList.toggle('add')
+                                if( none.classList == ''){
+                                    btn.textContent = 'Hide'
+                                }else{
+                                    btn.textContent = 'Show'
+
+                                }
+
+                            }
+                            btn.addEventListener('click',show, false)
+                            
+                            
+                        </script>
+</html>
