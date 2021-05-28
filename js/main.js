@@ -21,7 +21,7 @@ const links =[
     },
     {
         label :" Midterm",
-        url : "./week6/index.html"
+        url : "./midterm/index.html"
     },
 ]
 
