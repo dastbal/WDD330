@@ -1,7 +1,12 @@
-let data = [];
+
 
 function readFromLS(key){
     let data = JSON.parse(localStorage.getItem(key));
+    if (data==null){
+        data = []
+        return data
+    }
+    
     return data
     
 

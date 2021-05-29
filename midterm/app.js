@@ -1,3 +1,8 @@
 import Todo from './Todo.js'
 
-const myTodo = new Todo('showList', 'obj')
+const btn = document.getElementById('btnAdd')
+
+const myTodo = new Todo('showList','data','newTask')
+
+
+btn.addEventListener('click', myTodo.addTodo())

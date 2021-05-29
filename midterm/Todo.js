@@ -1,5 +1,5 @@
 import {writeToLS, readFromLS} from './ls.js'
-import { onClick , querySelector } from './utilities.js'
+import {querySelector} from './utilities.js'
 
 export default class Todo{
     constructor(Id, key , inputId ){
@@ -8,8 +8,12 @@ export default class Todo{
         this.key = key;
     }
     addTodo(){
-        let task = this.inputId.value;
-        saveTodo(task,this.key);
+        let task = this.inputId.value
+        
+        console.log('en addTodo')
+        console.log(task)
+        console.log(this.inputId)
+        saveTodo(task , this.key);
         this.listTodo();
         
 
@@ -28,33 +32,45 @@ export default class Todo{
         renderTodoList(getTodo(this.key),this.rootElement);
 
     }
-    completeTodo(){
-        // when I check
+    // completeTodo(){
+    //     // when I check
 
-    }
-    removeTodo(){
+    // }
+    // removeTodo(){
 
-    }
-    filterTodo(){
-        // to show completed or actived tasl
+    // }
+    // filterTodo(){
+    //     // to show completed or actived tasl
 
-    }
+    // }
 
 }
+
+
 let listTask = null;
+
+
+
 function saveTodo (task,key){
     // in : value from the input and name of the key to storege the data
     let newTask ={}
     let list;
-    newTask.id =Date().now();
+    let time = new Date().toLocaleTimeString()
+    newTask.id = time
     newTask.content = task;
     newTask.completed= false;
-    list = getTodo(key).push(newTask);
+    list = getTodo(key)
+    list.push(newTask);
     
     writeToLS(key,list);
+    console.log(list)
+    console.log(task)
     
 }
-function getTodo (key){
+
+
+
+function getTodo(key){
     if (listTask == null ){
         listTask = readFromLS(key)
     }
@@ -62,6 +78,10 @@ function getTodo (key){
 
     
 }
+
+
+
+
 function renderTodoList (list, element){
     list.forEach( task => {
         const oneList = createOneList(task)
@@ -71,14 +91,18 @@ function renderTodoList (list, element){
 
 }
 
+
+
+
 function createOneList(task){
     let li = document.createElement('li')
-    let checkBox = document.createElement('input[type="checkbox"]')
+    let checkBox = document.createElement('input')
     let label = document.createElement('label')
     let btn = document.createElement('buttom')
 
 
     checkBox.setAttribute('id',task.id)
+    checkBox.setAttribute('type','checkbox')
     btn.innerHTML = 'x'
 
 
