@@ -36,14 +36,15 @@ export default class Todo{
     //     // when I check
 
     // }
-    // removeTodo(){
+    removeTodo(){
 
-    // }
+
+    }
+     
     // filterTodo(){
     //     // to show completed or actived tasl
 
     // }
-
 }
 
 
@@ -55,7 +56,7 @@ function saveTodo (task,key){
     // in : value from the input and name of the key to storege the data
     let newTask ={}
     let list;
-    let time = new Date().toLocaleTimeString()
+    let time = new Date().getTime()
     newTask.id = time
     newTask.content = task;
     newTask.completed= false;
@@ -98,7 +99,7 @@ function createOneList(task){
     let li = document.createElement('li')
     let checkBox = document.createElement('input')
     let label = document.createElement('label')
-    let btn = document.createElement('buttom')
+    let btn = document.createElement('button')
 
 
     checkBox.setAttribute('id',task.id)

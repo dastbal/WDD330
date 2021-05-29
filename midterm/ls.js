@@ -18,4 +18,5 @@ function writeToLS(key, data){
 
 }
 
-export { readFromLS , writeToLS}
+
+export { readFromLS , writeToLS }

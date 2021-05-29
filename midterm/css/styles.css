@@ -33,6 +33,12 @@ li button{
     right: 7%;
     
 }
+button:hover{
+    
+    background-color: black;
+    color: white;
+    
+}
 .list li input{
     width: 30px;
     height: 30px;

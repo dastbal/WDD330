@@ -1,7 +1,7 @@
 
 
 function querySelector(selector){
-    const element = document.getElementById(selector)
+    const element = document.querySelector(selector)
     if (element) return element;
     else return null;
 
