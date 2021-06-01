@@ -2,17 +2,16 @@ import {writeToLS, readFromLS} from './ls.js'
 import {querySelector} from './utilities.js'
 
 export default class Todo{
-    constructor(Id, key , inputId ){
+    constructor(Id, key , inputId , removeId){
         this.rootElement =  querySelector(Id); 
         this.inputId =  querySelector(inputId); 
         this.key = key;
+        this.removeId = removeId;
     }
     addTodo(){
-        let task = this.inputId.value
-        
-        console.log('en addTodo')
+        let task = this.inputId.value        
         console.log(task)
-        console.log(this.inputId)
+        console.log(this.removeId)
         saveTodo(task , this.key);
         this.listTodo();
         
@@ -29,26 +28,60 @@ export default class Todo{
     listTodo(){
         // show all the task
         //   getTodo(this.key)
+        
         renderTodoList(getTodo(this.key),this.rootElement);
 
     }
-    // completeTodo(){
-    //     // when I check
+     removeTodo(){
+        console.log(this.removeId)
+        console.log(getTodo(this.key))
+        
+        // call the list
+        listTask = getTodo(this.key)
+        // find the index to delete from the dataç
+        let index = listTask.findIndex(  (task) =>
+            
+            
+            task.id == this.removeId
+            )
+        
+        console.log(index)
 
-    // }
-    removeTodo(){
+       listTask.splice(index,1)
 
+
+        console.log(getTodo(this.key))
+
+
+        // save the new list
+        writeToLS(this.key,listTask)
+        // render again
+        this.listTodo()
+        
+    
 
     }
+    //completeTodo(){
+      //  document.body.addEventListener("click", event => {
+        //    if (event.target.nodeName == "BUTTON") {
+          //    console.log("Clicked", event.target.textContent);
+            //}
+         //
+        // });
+
+
+   // }
      
     // filterTodo(){
     //     // to show completed or actived tasl
 
     // }
+    
 }
 
 
 let listTask = null;
+
 
 
 
@@ -65,7 +98,7 @@ function saveTodo (task,key){
     
     writeToLS(key,list);
     console.log(list)
-    console.log(task)
+    
     
 }
 
@@ -84,6 +117,7 @@ function getTodo(key){
 
 
 function renderTodoList (list, element){
+    element.innerHTML =''
     list.forEach( task => {
         const oneList = createOneList(task)
         element.appendChild(oneList)
@@ -102,8 +136,9 @@ function createOneList(task){
     let btn = document.createElement('button')
 
 
-    checkBox.setAttribute('id',task.id)
+    li.setAttribute('id',task.id)
     checkBox.setAttribute('type','checkbox')
+    checkBox.setAttribute('class','checked')
     btn.innerHTML = 'x'
 
 
