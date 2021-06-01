@@ -2,11 +2,11 @@ import {writeToLS, readFromLS} from './ls.js'
 import {querySelector} from './utilities.js'
 
 export default class Todo{
-    constructor(Id, key , inputId , removeId){
+    constructor(Id, key , inputId , target){
         this.rootElement =  querySelector(Id); 
         this.inputId =  querySelector(inputId); 
         this.key = key;
-        this.removeId = removeId;
+        this.target = target;
     }
     addTodo(){
         let task = this.inputId.value        
@@ -14,7 +14,7 @@ export default class Todo{
         console.log(this.removeId)
         saveTodo(task , this.key);
         this.listTodo();
-        
+        task= ''
 
         
 // call queryselector() , saveTodo(value,this.obj) then  listTodo()
@@ -33,49 +33,49 @@ export default class Todo{
 
     }
      removeTodo(){
-        console.log(this.removeId)
         console.log(getTodo(this.key))
         
         // call the list
         listTask = getTodo(this.key)
         // find the index to delete from the dataç
         let index = listTask.findIndex(  (task) =>
-            
-            
-            task.id == this.removeId
-            )
+        
+        
+        task.id == this.target
+        )
+        
         
         console.log(index)
-
-       listTask.splice(index,1)
-
-
-        console.log(getTodo(this.key))
-
-
-        // save the new list
-        writeToLS(this.key,listTask)
-        // render again
-        this.listTodo()
         
-    
+        listTask.splice(index,1)
+        console.log(getTodo(this.key))
+        // save the new list
+            writeToLS(this.key,listTask)
+            // render again
+            listTask = getTodo(this.key)
+            this.listTodo()
+            
+        }
+        completeTodo(){
+            listTask = getTodo(this.key)
+            
+            listTask.forEach( task =>{
+                if( task.id == this.target){
+                    task.completed = true
 
-    }
-    //completeTodo(){
-      //  document.body.addEventListener("click", event => {
-        //    if (event.target.nodeName == "BUTTON") {
-          //    console.log("Clicked", event.target.textContent);
-            //}
-         //
-        // });
+                }
+                
+                console.log(this.target)
+                console.log(task)
+            })
+            
+            
+            writeToLS(this.key,listTask)
+            this.listTodo()
+            console.log(listTask)
+      
 
-
-   // }
-     
-    // filterTodo(){
-    //     // to show completed or actived tasl
-
-    // }
+     }
     
 }
 
@@ -138,12 +138,12 @@ function createOneList(task){
 
     li.setAttribute('id',task.id)
     checkBox.setAttribute('type','checkbox')
-    checkBox.setAttribute('class','checked')
     btn.innerHTML = 'x'
 
 
 // to strike the text if  the task is completed 
     if(task.completed){
+        checkBox.completed = true
         let strike = document.createElement('strike')
         strike.textContent =task.content
         label.appendChild(strike)
