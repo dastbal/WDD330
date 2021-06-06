@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .add{
+            display: none;
+        }
+
+        h2{
+            color: blue;
+        }
+
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Week 7 notes</title>
+</head>
+<body>
+    <main>
+        <div class="exercices">
+         <h2><a href="./group/index.html">Group activity </a></h2> 
+         
+     
+        </div>
+        <div class="notes">
+            <h1>Notes from JavaScript: Novice to Ninja, 2nd Edition </h1>
+            <h2>Chapter 10: Testing and Debugging</h2>
+            
+            <h3>
+
+                Functions that Define and Rewrite Themselves
+
+            </h3>
+            <p>
+                This is called the Lazy Definition Pattern and is often used when some initialization code is required the first time it’s invoked. This means the initialization can be done the first time it’s called, then the function can be redefined to what you want it to be for every subsequent invocation.
+
+            </p> 
+            <p>
+                function party() {  <br>
+                    console.log('Wow this is amazing!');<br>
+                    party = function(){<br>
+                    console.log('Been there, got the T-Shirt');<br>
+                    }<br>
+                    <br>}
+                    <br>
+                    party.music = 'Classical Jazz'; // set a property of the function<br>
+                    <br>
+                    party();<br>
+                    << "Wow this is amazing!"<br>
+                    <br>
+                    party.music; // function has now been redefined, so the property doesn't exist<br>
+                    << undefined<br>
+            </p>
+            <h3>Dealing With A Settled Promise</h3>
+            <p>
+                Once a promise has been settled, 
+                the then() method can be used to deal with
+                 the outcome. This method accepts two arguments.
+                  The first is a fulfilment function that’s called when the promise 
+                  is resolved. Any data returned from the resolve() function will be passed along to
+                   this function. The second argument is a rejection function that’s
+                    called if the promise is rejected. Similar to the fulfilment
+                    function, the rejection function receives any data returned from the reject() function.</p>
+
+      
+<h3>
+    HIGHER-ORDER FUNCTIONS
+</h3>
+<p>Higher-order functions are functions that accept another function as an argument, or return another function as a result, or both.
+
+    function multiplier(x){ <br>
+        return function(y){<br>
+            return x*y;<br>
+        }<br>
+        }<br><br><br>
+
+
+        tripler = multiplier(3);<br>
+
+tripler(10);<br>
+<< 30<br>
+</p>
+
+    <h3>
+Promises
+    </h3>
+        <p>
+            It also accepts two functions as arguments: the resolve() function is called if the operation is successful, and the reject() function is called if the operation fails
+        </p>
+        <p>const promise = new Promise( (resolve, reject) => { <br>
+            // initialization code goes here<br>
+            if (success) {<br>
+                resolve(value);<br>
+            } else {<br>
+                reject(error);<br>
+            }<br>
+        });</p>
+
+        <h3>CURRYING</h3>
+        <P>
+            A function is said to be curried when not all arguments have been supplied to the function, so it returns another function that retains the arguments already provided, and expects the remaining arguments that were omitted when the original function was called. A final result is only returned once all the expected arguments have eventually been provided. <br><br>
+
+            function multiplier(x,y) {<br>
+                if (y === undefined) {<br>
+                    return function(z) {<br>
+                    return x * z;<br>
+                    }<br>
+                } else {<br>
+                    return x * y;<br>
+                }<br>
+                }<br>
+        </P>
+            
+            <!-- <h4>Chapter Summary </h4>
+                        <button id="btn" >show</button>
+                        <div  id="summary" class="add">
+
+                            
+                            
+                            
+                            
+                            <ul>
+                                <li>
+                                    
+                                    
+                                    Bugs are unavoidable in code, and it’s best to find them early rather than later.
+                                </li>
+                                <li>
+                                    
+                                    
+                                    
+                                    JavaScript can be put into strict mode using the string "use strict". This can be used in a whole file or just a single function.
+                                </li>
+                                <li>
+
+                                    
+                                    
+                                    Linting tools can be used to ensure your code follows good practice and conventions.
+                                </li>
+                                <li>
+                                    
+                                    
+                                    
+                                    Feature detection can check whether a method is supported before calling it, helping to avoid an exception being thrown.
+                                </li>
+                                <li>
+                                    
+    
+                                    
+                                    The console and browser’s built-in debugging tool can be used to interactively find and fix bugs in code.
+                                </li>
+<li>
+    
+    
+    
+    Exceptions can be thrown using the throw statement.
+</li>
+<li>
+    
+    
+    
+    An error object is created when an exception occurs.
+</li>
+<li>
+    
+    
+    
+    Any code placed inside a try block will pass any error objects to a catch block when an exception occurs. Any code inside a finally block will run if an exception does or does not occur.
+</li>
+<li>
+
+    
+    
+    Test-driven development is the practice of writing tests that fail, then writing the code that passes the test, then refactoring the code every time a new feature is implemented.
+</li>
+<li>
+    
+    
+    
+    The Jest framework can be used to test your code.
+</li>
+
+
+
+</ul>
+
+</div> -->
+
+
+<h2> Chapter 13: Ajax</h2>
+<h3> RESPONSE INTERFACE
+
+</h3>
+<p>For example, each response object has an ok property that checks to see if the response is successful. This is based on the HTTP status code, which can be accessed using the status property <br>
+    const url = 'https:example.com/data'; <br>
+ <br>
+fetch(url) <br>
+.then((response) => { <br>
+if(response.ok) { <br>
+return response; <br>
+} <br>
+throw Error(response.statusText); <br>
+}) <br>
+.then( response => // do something with response ) <br>
+.catch( error => console.log('There was an error!') ) <br>
+
+</p>
+<h3> Creating Response Objects</h3>
+<p>
+Although most of the time you will be dealing with a response object    that is returned from a request you make, you can also create your own   response objects using a constructor function: <br>  
+ <br>  
+const response = new Response( 'Hello!', { <br>  
+ok: true, <br>  
+status: 200, <br>  
+statusText: 'OK', <br>  
+type: 'cors', <br>  
+url: '/api' <br>  
+}); <br>  
+</p>
+<p>
+    Creating Response Objects  <br>
+Although most of the time you will be dealing with a response object that is returned from a request you make, you can also create your own response objects using a constructor function: <br>
+
+const response = new Response( 'Hello!', { <br>
+ok: true, <br>
+status: 200, <br>
+statusText: 'OK', <br>
+type: 'cors', <br>
+url: '/api' <br>
+}); <br>
+</p>
+<p>
+    A constructor function is used to create a new Request object. An example is shown below:  <br>
+
+const request = new Request('https://example.com/data', { <br>
+method: 'GET', <br>
+mode: 'cors', <br>
+redirect: 'follow', <br>
+cache: 'no-cache' <br>
+}); <br>
+     
+</p>
+
+<h3>book examples</h3>
+
+<a href="./exercise/ajax/index.html">  Ajax exercise</a>  <br>
+<a href="./exercise/send/index.html">  Sending Information</a>
+                           
+</div>
+
+<!-- <div class="questions">
+    <h2>Questions</h2>
+</div> -->
+
+<!-- <h2><a href="./exercise/group.html">Group activity exercises</a></h2> -->
+</main>
+
+
+</body>
+                       
+</html>
