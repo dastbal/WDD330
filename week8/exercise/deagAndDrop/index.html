@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<title> Drag and Drop</title>
+<link rel="stylesheet" href="style.css">
+<script src='main.js' defer></script>
+
+</head>
+<body>
+    <section class="draggable-elements">
+        <i class="fas fa-spider draggable"  draggable="true" style="color:#0000ff;" id="spider"></i>
+        <i class="fas fa-dragon draggable"  draggable="true" style="color:#ff0000;" id="dragon"></i>
+        <i class="fas fa-hippo draggable"  draggable="true" style="color:#00ff00;" id="hippo"></i>
+
+    </section>
+    <section class="droppable-elements">
+        <div class="droppable"    data-draggable-id="spider"><span>Spider</span></div>
+        <div class="droppable"   data-draggable-id="hippo"><span>Hippo</span></div>
+        <div class="droppable"   data-draggable-id="dragon"><span>Dragon</span></div>
+
+
+    </section>
+
+<script src="https://kit.fontawesome.com/92814a70db.js" crossorigin="anonymous"></script>
+
+</body>
+</html>

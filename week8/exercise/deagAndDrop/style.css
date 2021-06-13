@@ -1,0 +1,52 @@
+.draggable-elements{
+    display: flex;
+    justify-content: center;
+    margin: 3rem 0;
+    
+    
+}
+.draggable  {
+    font-size: 5rem;
+    width: auto;
+    margin: 1rem;
+    cursor: move;
+
+
+}
+.droppable-elements{
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+    margin: 3rem 0;
+    
+    
+}
+.droppable {
+    justify-self: center;
+    align-self: center;
+    
+    
+    width: 120px;
+    height: 120px;
+    border: 0.2rem rgb(36, 36, 133) dashed;
+    font-size: 2rem;
+    
+    margin: 2rem 2rem;
+
+}
+.droppable span {
+    pointer-events: none;
+}
+
+
+.droppable.dropped{
+
+}
+.draggable.dragged{
+    opacity: 0.1;
+    cursor:default;
+
+}
+.droped span {
+    display: none;
+}

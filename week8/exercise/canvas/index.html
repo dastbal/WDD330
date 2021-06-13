@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<style>
+
+.myCanvas {
+  border: dotted 2px black;
+}
+</style>
+<title>Ajax Example</title>
+</head>
+<body>
+
+
+    <canvas id="myCanvas" class="myCanvas" width="800" height="600">
+        Sorry! Your browser doesn’t support Canvas.
+      </canvas>
+      <img src="./neko.jpg" id="myImageElem" width="100px" alt="">
+    <canvas id="demo7" class="myCanvas" width="800" height="600">
+        Sorry! Your browser doesn’t support Canvas.
+      </canvas>
+      <img src="./neko.jpg" id="secondImage" width="100px" alt="">
+
+<script>
+window.addEventListener('load',drawImageToCanvas)
+window.addEventListener('load',manipulateImage)
+
+   var canvas = document.getElementById("myCanvas");     
+var context = canvas.getContext("2d");
+context.strokeStyle = "red";
+context.fillStyle = "rgba(0, 0, 255, 0.5)"; 
+
+// drow a rect
+context.fillRect(10, 10, 50, 50);   
+context.strokeRect(10, 10, 50, 50);  
+function drawImageToCanvas() {
+  var canvas = document.getElementById("myCanvas");
+  var context = canvas.getContext("2d");
+  var image = document.getElementById("myImageElem");
+  context.drawImage(image, 60, 60); 
+  var imageData = context.getImageData(0, 0, 10, 10);
+var pixelData = imageData.data;
+console.log(pixelData.length);
+}
+function manipulateImage() {
+  var canvas = document.getElementById("demo7");
+  var context = canvas.getContext("2d");
+  var image = document.getElementById("secondImage");
+  context.drawImage(image, 60, 60);
+
+  var imageData = context.getImageData(0, 0, 400, 400);
+    
+  for (var i = 0; i < imageData.data.length; i += 4) {
+    var red = imageData.data[i];
+    var green = imageData.data[i + 1];
+    var blue = imageData.data[i + 2];
+        
+    var grayscale = red * 0.3 + green * 0.59 + blue * 0.11;
+        
+    imageData.data[i] = grayscale;
+    imageData.data[i + 1] = grayscale;
+    imageData.data[i + 2] = grayscale;
+  } 
+  context.putImageData(imageData, 0, 0);
+}
+
+
+</script>
+</body>
+</html>
