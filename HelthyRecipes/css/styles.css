@@ -93,3 +93,65 @@ body {
     margin-top: 0.5rem;
     height: 2.2rem;
 }
+
+
+.recipe {
+    background-color: var(--green);
+    border-radius: 1rem;
+    display: flex;
+    justify-content: space-evenly;
+    height: 10rem;
+    width: 90%;
+    margin: 0 5% 1rem;
+}
+
+.recipe--img {
+    width: 50%;
+    height: 80%;
+    margin-top: 5%;
+
+}
+
+.recipe--img img {
+
+    height: 100%;
+
+}
+
+.recipe--container {
+    font-size: 1.3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.recipe--container button {
+    font-size: 1.3rem;
+    text-align: center;
+    margin-top: 1rem;
+    border: none;
+    background-color: var(--green);
+    color: var(--blue);
+}
+
+.full--img {
+    display: block;
+    height: 30vh;
+}
+
+.full--img img {
+    width: 80%;
+    height: 100%;
+    margin: 0 10%;
+}
+
+.top {
+    display: flex;
+    justify-content: space-around;
+    margin: 0.5rem 0;
+}
+
+.instructions {
+    text-align: center;
+    margin-bottom: 1rem;
+}
