@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+:root {
+    --blue: #1A759F;
+    --green: #52B69A;
+    --white: #ffffdd;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    width: 100%;
+}
+
+body {
+    font-family: 'Righteous', cursive;
+}
+
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--blue);
+    color: var(--white);
+    height: 12vh;
+
+}
+
+.favoriteRecipes h2 {
+    text-align: center;
+    color: var(--blue);
+    padding: 1rem 0;
+}
+
+#favoriteRecipes {
+    padding: 1rem;
+    background-color: var(--green);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    justify-items: center;
+
+}
+
+.favoriteRecipe {
+    background-color: var(--green);
+    text-align: center;
+}
+
+.favoriteRecipe p {
+    padding: 0.5rem;
+}
+
+
+
+.favoriteRecipe--img {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+}

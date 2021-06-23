@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <style>
+        .add{
+            display: none;
+        }
+
+        h2{
+            color: blue;
+        }
+
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Week 9 notes</title>
+</head>
+<body>
+    <main>
+        <div class="exercices">
+            <h2><a href="./exercise/group/index-START.html">Group activity </a></h2> 
+            
+            
+            <h3>book example</h3>
+            
+            <a href="./exercise/web-socket/index.html"> Web Socket  </a>  <br>
+            
+            
+        </div>
+        <div class="notes">
+            <h1>Notes from JavaScript: Novice to Ninja, 2nd Edition  </h1>
+            <h2>Chapter 9: The Window Object</h2>
+            <p>If you don't know the name of the global object, 
+                you can also refer to it using the keyword this 
+                in the global scope. The following code provides
+                 a quick way of assigning the variable global to
+                  the global object:</p>
+        <h2>window.location</h2>
+        <ul>
+            <li>href</li>
+            <li>protocol</li>
+            <li>host</li>
+            <li>hostname</li>
+            <li>hostport</li>
+            <li>pathname</li>
+            <li>search</li>
+            <li>search</li>
+            <li>reload()</li>
+            <li>assign()</li>
+        </ul>
+        <h2>window.history</h2>
+        <ul>
+            <li>length</li>
+            <li>go()</li>
+            <li>forward()</li>
+            <li>back()</li>
+        </ul>
+        <h2>window.screen</h2>
+        <ul>
+            <li>
+                height
+        </li>
+        <li>width , availWidth</li>
+        <li>height, availHeight</li>
+        <li>colorDepth</li>
+        
+    </ul>
+    <p>More Useful on Mobile
+        The Screen object has more uses for mobile devices. It also allows you to do things like turn off the device's screen, detect 
+        a change in its orientation or lock it in a specific orientation.</p>
+                
+    <h3>Creating Cookies</h3>
+    <p>The document.cookie property acts like a special type of string. Assigning another cookie to it won’t overwrite the entire property, it will just append it to the end of
+        the string. So we can add more cookies by assigning them to document.cookie:
+
+        document.cookie = 'hero=true';  <br> <br>
+        << "hero=true"  <br> <br>
+          <br> <br>
+        document.cookie = 'city=Metropolis';  <br> <br>
+        << "city=Metropolis"  <br> <br>
+                    </p>
+                    <h3>Changing Cookie Values</h3>
+                      <p> A cookie’s value can be changed by
+                         reassigning it to document.cookie using
+                          the same name but a different value. 
+                          The following code will update the value 
+                          of two of the cookies that we set in the previous 
+                          section:</p>
+                          <p>DELETING COOKIES <br>
+                            To remove a cookie, you need to set it to expire at a time in the past:
+                            <br>
+                            document.cookie = 'name=Batman; expires=Thu, 01 Jan 1970 00:00:01 GMT';
+                                        </p>
+<h2>  Chapter 14: HTML5 APIs</h2>
+<h3>The data- Attribute</h3>
+
+<p>Notice that the data- prefix is dropped. To access the attribute, powers is used as if it’s a property of the dataset object. If a data- attribute’s name contains hyphens, they are replaced with camel-case notation, so data-max-length would be accessed using dataset.maxLength.</p>
+<h3>WEBSOCKETS</h3>
+<p>Websocket is a new protocol that allows two-way communication with a server – also known as push messaging. This means that a connection is kept open and responses are ‘pushed’ to the client as soon as they are received.
+
+</p>
+
+</main>
+
+
+</body>
+                       
+</html>

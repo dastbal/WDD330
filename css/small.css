@@ -1,0 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700&family=Signika:wght@300;400;500;600;700&display=swap");
+html {
+  font-size: 12px;
+}
+body {
+  width: 100%;
+  margin: 0.5rem auto;
+  background-color: #f3efef;
+}
+h1,
+h2 {
+  margin: 0;
+  font-family: "Signika", sans-serif;
+}
+p {
+  font-family: "Roboto Slab", serif;
+}
+header,
+footer {
+  background: #191964;
+  color: #ffffff;
+  padding: 2rem 1rem;
+}
+header {
+  font-size: 2rem;
+  text-align: center;
+}
+
+img {
+  display: inline-block;
+  box-shadow: 4px 4px 20px 1px #000000;
+  width: 150px;
+  height: 250px;
+}
+main {
+  font-size: 1.5rem;
+  padding: 3.5rem;
+}
+main a {
+  color: #191964;
+}
+footer {
+  font-size: 1.2rem;
+  text-align: center;
+  line-height: 2rem;
+  padding: 1rem 1rem;
+}
+
+footer a {
+  color: #ffffff;
+}
+footer span {
+  color: hsl(56, 100%, 50%);
+  font-weight: bold;
+}

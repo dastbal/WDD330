@@ -1,0 +1,31 @@
+@media only screen and (min-width: 900px) {
+  html {
+    font-size: 16px;
+  }
+  body {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  header {
+    text-align: center;
+  }
+
+  img {
+    float: right;
+    position: relative;
+    top: -4.7rem;
+    right: 2.5rem;
+
+    box-shadow: 4px 4px 20px 1px #000000;
+  }
+  header,
+  footer {
+    background: #191964;
+    color: #ffffff;
+    border-radius: 0.5rem;
+    padding: 2rem 1rem;
+  }
+  footer {
+    padding: 0.8rem 1rem;
+  }
+}
