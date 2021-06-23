@@ -63,3 +63,33 @@ body {
     border-radius: 50%;
     overflow: hidden;
 }
+
+#search {
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+    padding: 2rem 0;
+}
+
+#search .search--header {
+    display: flex;
+    font-size: 1.8rem;
+}
+
+#search button {
+    font-size: 1.3rem;
+    margin-bottom: -0.2rem;
+    border: none;
+    background-color: white;
+    padding-left: 0.5rem;
+
+}
+
+#search input {
+    background-color: var(--blue);
+    border-radius: 0.5rem;
+    border: 3px solid black;
+    width: 80%;
+    margin-top: 0.5rem;
+    height: 2.2rem;
+}
