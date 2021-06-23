@@ -64,6 +64,7 @@ body {
     overflow: hidden;
 }
 
+
 #search {
     display: flex;
     flex-direction: column;
@@ -89,7 +90,7 @@ body {
     background-color: var(--blue);
     border-radius: 0.5rem;
     border: 3px solid black;
-    width: 80%;
+    width: 90%;
     margin-top: 0.5rem;
     height: 2.2rem;
 }
@@ -106,8 +107,8 @@ body {
 }
 
 .recipe--img {
-    width: 50%;
-    height: 80%;
+    width: 150px;
+    height: 120px;
     margin-top: 5%;
 
 }
@@ -115,6 +116,7 @@ body {
 .recipe--img img {
 
     height: 100%;
+    width: 100%;
 
 }
 
@@ -136,13 +138,13 @@ body {
 
 .full--img {
     display: block;
-    height: 30vh;
+    height: 300px;
 }
 
 .full--img img {
-    width: 80%;
-    height: 100%;
-    margin: 0 10%;
+    width: 90%;
+    height: 300px;
+    margin: 0 5%;
 }
 
 .top {
@@ -154,4 +156,14 @@ body {
 .instructions {
     text-align: center;
     margin-bottom: 1rem;
+}
+
+@media only screen and (min-width:650px) {
+    #recipes {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+    }
+
+
 }
