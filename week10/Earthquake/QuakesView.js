@@ -2,7 +2,8 @@
 export default // Quake View handler
 class QuakesView {
   renderQuakeList(quakeList, listElement) {
-    //build a list of the quakes...include the title and time of each quake then append the list to listElement. You should also add the id of the quake record as a data- property to the li. ie. &lt;li data-id=""&gt;
+    //build a list of the quakes...include the title and time of each quake then append the list to listElement. 
+    //You should also add the id of the quake record as a data- property to the li. ie. &lt;li data-id=""&gt;
 
     quakeList.features.forEach(element => {
       const item = document.createElement('li');
@@ -12,7 +13,7 @@ class QuakesView {
 
       const { properties } = element;
 
-      
+
       item.setAttribute('data-id', element.id);
       item.innerHTML = `${properties.title} 
       <p>${new Date(properties.time)}</p>`;
