@@ -9,98 +9,47 @@
         h2{
             color: blue;
         }
+        b{
+            color: red;
+        }
 
     </style>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Week 9 notes</title>
+    <title>Week 10 notes</title>
 </head>
 <body>
     <main>
         <div class="exercices">
-            <h2><a href="./exercise/group/index-START.html">Group activity </a></h2> 
+            <h2><a href="./Earthquake/index.html">Group activity </a></h2> 
             
-            
-            <h3>book example</h3>
-            
-            <a href="./exercise/web-socket/index.html"> Web Socket  </a>  <br>
+      
             
             
         </div>
         <div class="notes">
-            <h1>Notes from JavaScript: Novice to Ninja, 2nd Edition  </h1>
-            <h2>Chapter 9: The Window Object</h2>
-            <p>If you don't know the name of the global object, 
-                you can also refer to it using the keyword this 
-                in the global scope. The following code provides
-                 a quick way of assigning the variable global to
-                  the global object:</p>
-        <h2>window.location</h2>
-        <ul>
-            <li>href</li>
-            <li>protocol</li>
-            <li>host</li>
-            <li>hostname</li>
-            <li>hostport</li>
-            <li>pathname</li>
-            <li>search</li>
-            <li>search</li>
-            <li>reload()</li>
-            <li>assign()</li>
-        </ul>
-        <h2>window.history</h2>
-        <ul>
-            <li>length</li>
-            <li>go()</li>
-            <li>forward()</li>
-            <li>back()</li>
-        </ul>
-        <h2>window.screen</h2>
-        <ul>
-            <li>
-                height
-        </li>
-        <li>width , availWidth</li>
-        <li>height, availHeight</li>
-        <li>colorDepth</li>
-        
-    </ul>
-    <p>More Useful on Mobile
-        The Screen object has more uses for mobile devices. It also allows you to do things like turn off the device's screen, detect 
-        a change in its orientation or lock it in a specific orientation.</p>
-                
-    <h3>Creating Cookies</h3>
-    <p>The document.cookie property acts like a special type of string. Assigning another cookie to it won’t overwrite the entire property, it will just append it to the end of
-        the string. So we can add more cookies by assigning them to document.cookie:
+            <h2>Validating forms using JavaScript | The Constraint Validation API</h2>
+            <p>The Constraint validation API makes the following properties available on the above elements. <br> <br> 
 
-        document.cookie = 'hero=true';  <br> <br>
-        << "hero=true"  <br> <br>
-          <br> <br>
-        document.cookie = 'city=Metropolis';  <br> <br>
-        << "city=Metropolis"  <br> <br>
-                    </p>
-                    <h3>Changing Cookie Values</h3>
-                      <p> A cookie’s value can be changed by
-                         reassigning it to document.cookie using
-                          the same name but a different value. 
-                          The following code will update the value 
-                          of two of the cookies that we set in the previous 
-                          section:</p>
-                          <p>DELETING COOKIES <br>
-                            To remove a cookie, you need to set it to expire at a time in the past:
-                            <br>
-                            document.cookie = 'name=Batman; expires=Thu, 01 Jan 1970 00:00:01 GMT';
-                                        </p>
-<h2>  Chapter 14: HTML5 APIs</h2>
-<h3>The data- Attribute</h3>
-
-<p>Notice that the data- prefix is dropped. To access the attribute, powers is used as if it’s a property of the dataset object. If a data- attribute’s name contains hyphens, they are replaced with camel-case notation, so data-max-length would be accessed using dataset.maxLength.</p>
-<h3>WEBSOCKETS</h3>
-<p>Websocket is a new protocol that allows two-way communication with a server – also known as push messaging. This means that a connection is kept open and responses are ‘pushed’ to the client as soon as they are received.
-
-</p>
+                <br> <br> <b>  validationMessage: </b> Returns a localized message describing the validation constraints that the control doesn't satisfy (if any). If the control is not a candidate for constraint validation (willValidate is false) or the element's value satisfies its constraints (is valid), this will return an empty string.
+                <br> <br> <b>  validity: </b> Returns a ValidityState object that contains several properties describing the validity state of the element. You can find full details of all the available properties in the ValidityState reference page; below is listed a few of the more common ones:
+                <br> <br>  <b> patternMismatch: </b> Returns true if the value does not match the specified pattern, and false if it does match. If true, the element matches the :invalid CSS pseudo-class.
+                <br> <br>  <b> tooLong: </b> Returns true if the value is longer than the maximum length specified by the maxlength attribute, or false if it is shorter than or equal to the maximum. If true, the element matches the :invalid CSS pseudo-class.
+                <br> <br>  <b> tooShort: </b> Returns true if the value is shorter than the minimum length specified by the minlength attribute, or false if it is greater than or equal to the minimum. If true, the element matches the :invalid CSS pseudo-class.
+                <br> <br>  <b> rangeOverflow: </b> Returns true if the value is greater than the maximum specified by the max attribute, or false if it is less than or equal to the maximum. If true, the element matches the :invalid and :out-of-range CSS pseudo-classes.
+                <br> <br>  <b> rangeUnderflow: </b> Returns true if the value is less than the minimum specified by the min attribute, or false if it is greater than or equal to the minimum. If true, the element matches the :invalid and :out-of-range CSS pseudo-classes.
+                <br> <br>  <b> typeMismatch: </b> Returns true if the value is not in the required syntax (when type is email or url), or false if the syntax is correct. If true, the element matches the :invalid CSS pseudo-class.
+                <br> <br>  <b> valid: </b> Returns true if the element meets all its validation constraints, and is therefore considered to be valid, or false if it fails any constraint. If true, the element matches the :valid CSS pseudo-class; the :invalid CSS pseudo-class otherwise.
+                <br> <br>  <b> valueMissing: </b> Returns true if the element has a required attribute, but no value, or false otherwise. If true, the element matches the :invalid CSS pseudo-class.
+                <br> <br>  <b> willValidate: </b> Returns true if the element will be validated when the form is submitted; false otherwise.
+                <br> <br>  <b> The Constraint </b> Validation API also makes the following methods available on the above elements.
+                <br> <br>  
+                <br> <br>  <b> checkValidity():</b>  Returns true if the element's value has no validity problems; false otherwise. If the element is invalid, this method also fires an invalid event on the element.
+                <br> <br>  <b> setCustomValidity(message):</b>  Adds a custom error message to the element; if you set a custom error message, the element is considered to be invalid, and the specified error is displayed. This lets you use JavaScript code to establish a validation failure other than those offered by the standard HTML5 validation constraints. The message is shown to the user when reporting the problem.</p>
+            
+<h2>  Using Fetch</h2>
 
 </main>
 
