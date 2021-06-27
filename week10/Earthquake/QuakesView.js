@@ -7,17 +7,25 @@ class QuakesView {
     quakeList.features.forEach(element => {
       const item = document.createElement('li');
       console.log(element);
+
+              // using desturturation
+
+      const { properties } = element;
+
+      
       item.setAttribute('data-id', element.id);
-      item.innerHTML = `${element.properties.title} 
-      <p>${new Date(element.properties.time)}</p>`;
+      item.innerHTML = `${properties.title} 
+      <p>${new Date(properties.time)}</p>`;
       listElement.appendChild(item);
     });
 
     listElement.innerHTML = quakeList.features
       .map(quake => {
-        return `<li data-id=${quake.id}>${
-          quake.properties.title
-        } <div>${new Date(quake.properties.time)}</div></li>`;
+        // using desturturation
+        const  {id, properties} = quake
+        return `<li data-id=${id}>${
+          properties.title
+        } <div>${new Date(properties.time)}</div></li>`;
       })
       .join('');
   }
