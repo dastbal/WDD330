@@ -90,9 +90,23 @@ body {
     background-color: var(--blue);
     border-radius: 0.5rem;
     border: 3px solid black;
-    width: 90%;
+    width: 80%;
     margin-top: 0.5rem;
     height: 2.2rem;
+    padding-top: 0.5rem;
+    transition: all 0.5s ease;
+    box-shadow: 2px 2px 3px  rgba(0, 0, 0, 0.514);
+}
+#search input:focus {
+    outline: none;
+    height: 2.5rem;
+    width: 85%;
+}
+#search input::placeholder {
+    color: rgba(233, 231, 231, 0.904);
+    font-size: 1.5rem;
+    padding-left: 1rem;
+    ;
 }
 
 
