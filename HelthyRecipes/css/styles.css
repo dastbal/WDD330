@@ -73,8 +73,8 @@ body {
 }
 
 #search .search--header {
-    display: flex;
     font-size: 1.8rem;
+    font-weight: bold;
 }
 
 #search button {
@@ -93,20 +93,20 @@ body {
     width: 80%;
     margin-top: 0.5rem;
     height: 2.2rem;
-    padding-top: 0.5rem;
+    padding: 0.25rem;
     transition: all 0.5s ease;
     box-shadow: 2px 2px 3px  rgba(0, 0, 0, 0.514);
+    padding-left: 1rem;
+    font-size: 1.5rem;
 }
 #search input:focus {
+    box-shadow: 3px 3px 15px 3px  rgba(0, 0, 0, 0.514);
     outline: none;
-    height: 2.5rem;
-    width: 85%;
+    transform: scale(1.05,1.1);
 }
 #search input::placeholder {
-    color: rgba(233, 231, 231, 0.904);
+    color: rgba(223, 211, 211, 0.904);
     font-size: 1.5rem;
-    padding-left: 1rem;
-    ;
 }
 
 
