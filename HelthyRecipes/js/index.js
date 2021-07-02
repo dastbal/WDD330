@@ -1,7 +1,13 @@
+import {saveRecipeLs,getRecipesFromLs,removeRecipeLs} from './Recipe.js'
+
 const API = 'https://api.spoonacular.com/recipes/complexSearch?apiKey=74fbd4893ddf42fb986637f39f01dc28&query=';
+const instructions = 'https://api.spoonacular.com/recipes/{id}/analyzedInstructions?apiKey=74fbd4893ddf42fb986637f39f01dc28';
+const nutrition = 'https://api.spoonacular.com/recipes/{id}/nutritionWidget.json?apiKey=74fbd4893ddf42fb986637f39f01dc28';
+const ingridients = ' https://api.spoonacular.com/recipes/{id}/ingredientWidget.json?apiKey=74fbd4893ddf42fb986637f39f01dc28';
 
 const root = document.getElementById('container')
 const containerSearch = document.getElementById('containerSearch')
+
 
 
 const showSearchInput = ()=>{
@@ -47,12 +53,12 @@ function showSearchRecipes(recipesInfo){
         const recipe = document.createElement('div')
         recipe.classList.add('recipe')
         recipe.innerHTML =` 
-        <div id='${id}' class="recipe--img">
+        <div  class="recipe--img">
             <img src="${image}" alt="${title}">
         </div>
         <div class="recipe--container">
             <p>${title}</p>
-            <button><i class="fas fa-heart"></i></button>
+            <button id='${id}'  class='btnFavorite' onclick='a()'><i  class="fas fa-heart"></i></button>
         </div>`;
     recipes.appendChild(recipe);
 
@@ -75,3 +81,14 @@ async function searchRecipes(e){
 let form = document.getElementById('search');
 form.addEventListener('submit', e =>{searchRecipes(e)});
 
+// let btnFavorite = document.getElementsByClassName('btnFavorite');
+// console.log(btnFavorite)
+// console.log(btnFavorite)
+// btnFavorite = Array.from(btnFavorite)
+
+// btnFavorite.forEach(btn =>{
+//     btn.addEventListener('click',e=>console.log(e))
+// })
+function a(e){
+    console.log(e)
+}

@@ -155,9 +155,12 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 .recipe--container button {
+    width: 3rem;
+    padding: 2rem 2rem;
     font-size: 1.3rem;
     text-align: center;
     margin-top: 1rem;
@@ -199,6 +202,12 @@ body {
         grid-template-columns: 1fr 1fr;
 
     }
-
+    
 
 }
+
+.recipe--container button.favorite{
+        color: red;
+        transform: scale(1.2);
+    
+    }
