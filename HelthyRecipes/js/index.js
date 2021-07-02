@@ -95,7 +95,7 @@ function favoriteListener(recipes){
     console.log(btnFavorite)
     
     btnFavorite.forEach(btn =>{
-    btn.addEventListener('click',e=>addFavoriteRecipe(recipes, e.target.id))
+    btn.addEventListener('click',e=>addFavoriteRecipe(recipes, e))
 })
 
 }
@@ -103,10 +103,14 @@ function favoriteListener(recipes){
 
 
 // this is the callback to the listener to save the favorite recipe
-function addFavoriteRecipe(dataInfo,id){
-    //
-    saveRecipeLs(dataInfo,id)
-    console.log(getRecipesFromLs())
+function addFavoriteRecipe(dataInfo, event){
+    
+    const id = event.target.id;
+    saveRecipeLs(dataInfo,id);
+    console.log(getRecipesFromLs());
+    console.log(event);
+    // obtain the button and add the class to change the color
+    event.path[1].classList.toggle('favorite');
 
 }
 
