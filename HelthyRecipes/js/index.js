@@ -38,7 +38,6 @@ async function getRecipeSearch(){
 
 //  this function will render  the html of the serac recipes
 function showSearchRecipes(recipesInfo){
-    root.innerHTML= '<h3> Loading... </h3>'
     root.innerHTML = ''
     const recipes = document.createElement('div')
     recipes.classList.add('recipes')
@@ -47,27 +46,27 @@ function showSearchRecipes(recipesInfo){
         const { id, title, image} = element;
         const recipe = document.createElement('div')
         recipe.classList.add('recipe')
-        recipe.innerHTML =` <div id='${id}' class="recipe--img">
-        <img src="${image}" alt="${title}">
-    </div>
-    <div class="recipe--container">
-        <p>${title}</p>
-        <button><i class="fas fa-heart"></i></button>
-    </div>`;
-    recipes.appendChild(recipe)
+        recipe.innerHTML =` 
+        <div id='${id}' class="recipe--img">
+            <img src="${image}" alt="${title}">
+        </div>
+        <div class="recipe--container">
+            <p>${title}</p>
+            <button><i class="fas fa-heart"></i></button>
+        </div>`;
+    recipes.appendChild(recipe);
 
 
         
     });
-    root.appendChild(recipes)
-
-
-
+    root.appendChild(recipes);
 }
+
 async function searchRecipes(e){
     e.preventDefault();
+    root.innerHTML= `<h3 class='load' > Loading... </h3>`;
     const dataInfo = await getRecipeSearch();
-    console.log(data)
+    console.log(data);
     showSearchRecipes(dataInfo);
     
 

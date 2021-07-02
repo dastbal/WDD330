@@ -14,6 +14,9 @@
 img {
     width: 100%;
 }
+.load{
+    text-align: center;
+}
 
 body {
     font-family: 'Righteous', cursive;
@@ -90,6 +93,7 @@ body {
     background-color: #21759c28;
 
 }
+
 
 
 #search input {
