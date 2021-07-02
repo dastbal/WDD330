@@ -58,7 +58,7 @@ function showSearchRecipes(recipesInfo){
         </div>
         <div class="recipe--container">
             <p>${title}</p>
-            <button id='${id}'  class='btnFavorite' onclick='a()'><i  class="fas fa-heart"></i></button>
+            <button  class='btnFavorite'  ><i id='${id}'  class="fas fa-heart"></i></button>
         </div>`;
     recipes.appendChild(recipe);
 
@@ -68,27 +68,53 @@ function showSearchRecipes(recipesInfo){
     root.appendChild(recipes);
 }
 
+
+// this make a request and then call the  function to show the recipes
 async function searchRecipes(e){
     e.preventDefault();
     root.innerHTML= `<h3 class='load' > Loading... </h3>`;
     const dataInfo = await getRecipeSearch();
     console.log(data);
     showSearchRecipes(dataInfo);
+
+    // add listener to add favorite
+    favoriteListener(dataInfo);
+
+
+    
+
     
 
 }
 
+///  add listerner to the button to obtain the id and call the function to save the favorit recipe
+
+function favoriteListener(recipes){
+    let btnFavorite = document.getElementsByClassName('btnFavorite');
+    btnFavorite = Array.from(btnFavorite)
+    console.log(btnFavorite)
+    
+    btnFavorite.forEach(btn =>{
+    btn.addEventListener('click',e=>addFavoriteRecipe(recipes, e.target.id))
+})
+
+}
+
+
+
+// this is the callback to the listener to save the favorite recipe
+function addFavoriteRecipe(dataInfo,id){
+    //
+    saveRecipeLs(dataInfo,id)
+    console.log(getRecipesFromLs())
+
+}
+
+
+
+
 let form = document.getElementById('search');
 form.addEventListener('submit', e =>{searchRecipes(e)});
 
-// let btnFavorite = document.getElementsByClassName('btnFavorite');
-// console.log(btnFavorite)
-// console.log(btnFavorite)
-// btnFavorite = Array.from(btnFavorite)
 
-// btnFavorite.forEach(btn =>{
-//     btn.addEventListener('click',e=>console.log(e))
-// })
-function a(e){
-    console.log(e)
-}
+
