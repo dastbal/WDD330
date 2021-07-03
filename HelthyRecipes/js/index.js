@@ -78,6 +78,9 @@ async function showFavoriteRecipes(){
         favoriteContainer.append(recipesCreated);
         containerSearch.insertAdjacentElement('beforebegin',favoriteContainer)
     }
+
+    // adding the event  loistener to remove the recipe
+    removeFavoriteListener()
     
 }
 
@@ -92,7 +95,7 @@ async function searchRecipes(e){
     showSearchRecipes(dataInfo);
     
     // add listener to add favorite
-    favoriteListener(dataInfo);
+    addFavoriteListener(dataInfo);
     
     
     
@@ -103,13 +106,24 @@ async function searchRecipes(e){
 
 ///  add listerner to the button to obtain the id and call the function to save the favorit recipe
 
-function favoriteListener(recipes){
+function addFavoriteListener(recipes){
     let btnFavorite = document.getElementsByClassName('btnFavorite');
     btnFavorite = Array.from(btnFavorite)
     console.log(btnFavorite)
     
     btnFavorite.forEach(btn =>{
     btn.addEventListener('click',e=>addFavoriteRecipe(recipes, e))
+})
+
+}
+///  add event listener to the button that remove a recipe from favorite recipe
+
+function removeFavoriteListener(){
+    let btnRemoveFavorite = document.getElementsByClassName('removeFavoriteRecipe');
+    btnRemoveFavorite = Array.from(btnRemoveFavorite)
+    
+    btnRemoveFavorite.forEach(btn =>{
+    btn.addEventListener('click',(e)=>{removeFavoriteRecipe(e)})
 })
 
 }
@@ -125,13 +139,17 @@ function addFavoriteRecipe(dataInfo, event){
     console.log(event);
     // obtain the button and add the class to change the color
     event.path[1].classList.toggle('favorite');
-
+    // each time that a recipe is added   it is show the new list again
     showFavoriteRecipes()
+}
+
+//  this callback remove a favorite recipe clocked
+function removeFavoriteRecipe(event){
     
-    
-    
-    
-    
+    const id = event.target.id;
+    removeRecipeLs(id);
+    // render again new info
+    showFavoriteRecipes()
 }
 
 

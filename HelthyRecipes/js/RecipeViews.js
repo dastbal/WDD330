@@ -17,7 +17,7 @@ const createFavoriteRecipes = (favoriteRecipes)=>{
         const favoriteRecipeContainer = document.createElement('div');
         favoriteRecipeContainer.classList.add('favoriteRecipe')
         favoriteRecipeContainer.innerHTML =`
-        <button id="${id}">x</button>
+        <button class='removeFavoriteRecipe' id="${id}">x</button>
         <div class="favoriteRecipe--img">
             <img src="${image}" alt="${title}">
         </div>
