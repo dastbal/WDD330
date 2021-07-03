@@ -1,4 +1,5 @@
 import {saveRecipeLs,getRecipesFromLs,removeRecipeLs} from './Recipe.js'
+import { showSearchInput ,createFavoriteRecipes} from './RecipeViews.js'
 
 const API = 'https://api.spoonacular.com/recipes/complexSearch?apiKey=74fbd4893ddf42fb986637f39f01dc28&query=';
 const instructions = 'https://api.spoonacular.com/recipes/{id}/analyzedInstructions?apiKey=74fbd4893ddf42fb986637f39f01dc28';
@@ -7,19 +8,13 @@ const ingridients = ' https://api.spoonacular.com/recipes/{id}/ingredientWidget.
 
 const root = document.getElementById('container')
 const containerSearch = document.getElementById('containerSearch')
+const favoriteContainer = document.createElement('div')
+favoriteContainer.classList.add('favoriteRecipes')
 
 
-
-const showSearchInput = ()=>{
-    const searchInput = document.createElement('form');
-    searchInput.id='search';
-    searchInput.innerHTML =`
-    <button  class="search--header"> Search   <i class="fas fa-search"></i></button>    
-        <input placeholder="Search" id="searchInput" type="text" >`
-    containerSearch.append(searchInput);
-    
-}
 window.addEventListener('load',showSearchInput)
+window.addEventListener('load',showFavoriteRecipes)
+
 
 
 async function getJSON(){
@@ -38,7 +33,7 @@ async function getRecipeSearch(){
     const response = await fetch(URL);
     const data = await  response.json();
     return data
-
+    
 }
 
 
@@ -46,7 +41,7 @@ async function getRecipeSearch(){
 function showSearchRecipes(recipesInfo){
     root.innerHTML = ''
     const recipes = document.createElement('div')
-    recipes.classList.add('recipes')
+    recipes.id= 'recipes'
     const info = recipesInfo;
     info.results.forEach(element => {
         const { id, title, image} = element;
@@ -54,19 +49,38 @@ function showSearchRecipes(recipesInfo){
         recipe.classList.add('recipe')
         recipe.innerHTML =` 
         <div  class="recipe--img">
-            <img src="${image}" alt="${title}">
+        <img src="${image}" alt="${title}">
         </div>
         <div class="recipe--container">
-            <p>${title}</p>
-            <button  class='btnFavorite'  ><i id='${id}'  class="fas fa-heart"></i></button>
+        <p>${title}</p>
+        <button  class='btnFavorite'  ><i id='${id}'  class="fas fa-heart"></i></button>
         </div>`;
-    recipes.appendChild(recipe);
-
+        recipes.appendChild(recipe);
+        
 
         
     });
     root.appendChild(recipes);
 }
+
+
+// show Favorite recipes
+
+async function showFavoriteRecipes(){
+    favoriteContainer.innerHTML= '';
+    favoriteContainer.innerHTML= '<h2>Favorite Recipes</h2>';
+    const favoriterecipesInfo =  getRecipesFromLs();
+
+    // this   help do not  reate  nothing if the favorite recipes  array is empty
+    if( favoriterecipesInfo.length != 0){
+
+        const recipesCreated = createFavoriteRecipes(favoriterecipesInfo);
+        favoriteContainer.append(recipesCreated);
+        containerSearch.insertAdjacentElement('beforebegin',favoriteContainer)
+    }
+    
+}
+
 
 
 // this make a request and then call the  function to show the recipes
@@ -76,15 +90,15 @@ async function searchRecipes(e){
     const dataInfo = await getRecipeSearch();
     console.log(data);
     showSearchRecipes(dataInfo);
-
+    
     // add listener to add favorite
     favoriteListener(dataInfo);
-
-
     
-
     
-
+    
+    
+    
+    
 }
 
 ///  add listerner to the button to obtain the id and call the function to save the favorit recipe
@@ -112,7 +126,14 @@ function addFavoriteRecipe(dataInfo, event){
     // obtain the button and add the class to change the color
     event.path[1].classList.toggle('favorite');
 
+    showFavoriteRecipes()
+    
+    
+    
+    
+    
 }
+
 
 
 
