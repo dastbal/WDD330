@@ -29,5 +29,28 @@ const createFavoriteRecipes = (favoriteRecipes)=>{
     return favoriteRecipesContainer;
 
 }
+const createSearchRecipes = (RecipesSearch)=>{
+    const recipes = document.createElement('div');
+    recipes.id= 'recipes';
+    RecipesSearch.results.forEach(element => {
+        const { id, title, image} = element;
+        const recipe = document.createElement('div');
+        recipe.classList.add('recipe');
+        recipe.innerHTML =` 
+        <div  class="recipe--img">
+        <img src="${image}" alt="${title}">
+        </div>
+        <div class="recipe--container">
+        <p>${title}</p>
+        <button  class='btnFavorite'  ><i id='${id}'  class="fas fa-heart"></i></button>
+        </div>`;
+        recipes.appendChild(recipe);
+        
 
-export { showSearchInput ,createFavoriteRecipes}
+        
+    });
+    return recipes;
+}
+
+
+export { showSearchInput ,createFavoriteRecipes ,createSearchRecipes}

@@ -1,5 +1,5 @@
 import {saveRecipeLs,getRecipesFromLs,removeRecipeLs} from './Recipe.js'
-import { showSearchInput ,createFavoriteRecipes} from './RecipeViews.js'
+import { showSearchInput ,createFavoriteRecipes, createSearchRecipes} from './RecipeViews.js'
 
 const API = 'https://api.spoonacular.com/recipes/complexSearch?apiKey=74fbd4893ddf42fb986637f39f01dc28&query=';
 const instructions = 'https://api.spoonacular.com/recipes/{id}/analyzedInstructions?apiKey=74fbd4893ddf42fb986637f39f01dc28';
@@ -38,28 +38,10 @@ async function getRecipeSearch(){
 
 
 //  this function will render  the html of the serac recipes
-function showSearchRecipes(recipesInfo){
+async function showSearchRecipes(){
     root.innerHTML = ''
-    const recipes = document.createElement('div')
-    recipes.id= 'recipes'
-    const info = recipesInfo;
-    info.results.forEach(element => {
-        const { id, title, image} = element;
-        const recipe = document.createElement('div')
-        recipe.classList.add('recipe')
-        recipe.innerHTML =` 
-        <div  class="recipe--img">
-        <img src="${image}" alt="${title}">
-        </div>
-        <div class="recipe--container">
-        <p>${title}</p>
-        <button  class='btnFavorite'  ><i id='${id}'  class="fas fa-heart"></i></button>
-        </div>`;
-        recipes.appendChild(recipe);
-        
-
-        
-    });
+    const dataInfo = await getRecipeSearch();
+    const recipes = createSearchRecipes(dataInfo);
     root.appendChild(recipes);
 }
 
@@ -78,7 +60,6 @@ async function showFavoriteRecipes(){
         favoriteContainer.append(recipesCreated);
         containerSearch.insertAdjacentElement('beforebegin',favoriteContainer)
     }
-
     // adding the event  loistener to remove the recipe
     removeFavoriteListener()
     
@@ -87,32 +68,25 @@ async function showFavoriteRecipes(){
 
 
 // this make a request and then call the  function to show the recipes
-async function searchRecipes(e){
+function searchRecipes(e){
     e.preventDefault();
     root.innerHTML= `<h3 class='load' > Loading... </h3>`;
-    const dataInfo = await getRecipeSearch();
-    console.log(data);
-    showSearchRecipes(dataInfo);
-    
+    // const dataInfo = await getRecipeSearch();
+    showSearchRecipes();
     // add listener to add favorite
-    addFavoriteListener(dataInfo);
-    
-    
-    
-    
-    
-    
+    addFavoriteListener();    
 }
 
 ///  add listerner to the button to obtain the id and call the function to save the favorit recipe
 
-function addFavoriteListener(recipes){
+async function addFavoriteListener(){
+    const dataInfo = await getRecipeSearch();
     let btnFavorite = document.getElementsByClassName('btnFavorite');
     btnFavorite = Array.from(btnFavorite)
     console.log(btnFavorite)
     
     btnFavorite.forEach(btn =>{
-    btn.addEventListener('click',e=>addFavoriteRecipe(recipes, e))
+    btn.addEventListener('click',e=>addFavoriteRecipe(dataInfo, e))
 })
 
 }

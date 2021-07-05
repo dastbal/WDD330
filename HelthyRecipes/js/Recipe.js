@@ -23,14 +23,9 @@ function saveRecipeLs(newRecipe, favorite){
             }
             favoriteRecipes.push(favoriteRecipe)
         }
-
-
-
         
     });
     writeToLS(favoriteRecipes);
-
-
 }
 
 
@@ -42,8 +37,6 @@ function removeRecipeLs(favorite){
          return id != favorite
     });
 writeToLS(removed);
-
-
 }
 
 export {saveRecipeLs,getRecipesFromLs,removeRecipeLs}
