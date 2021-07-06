@@ -105,6 +105,7 @@ const createRecipeDetail= (id,nutrition,ingridients,instructions)=>{
         
 
     recipeDetailContainer.innerHTML =`
+    <button  id='btnBack' ><i class="fas fa-long-arrow-alt-left"></i></button>
     <div class="full--img">
         <img src="https://spoonacular.com/recipeImages/${id}-556x370.jpg" alt="Full recipe">
     </div>`;
