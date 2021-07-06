@@ -203,9 +203,16 @@ body {
     transform: scale(1.2);
 }
 
+#full{
+    display: flex;
+    flex-direction: column;
+    
+}
+
 .full--img {
+    align-self: center;
     display: block;
-    height: 300px;
+    width: 100%;
 }
 
 .full--img img {
@@ -231,6 +238,10 @@ body {
         grid-template-columns: 1fr 1fr;
 
     }
+    .full--img {
+        display: block;
+        width: 70%;
+    }
     #favoriteRecipes {
         margin-top: 2rem;
         padding: 1rem;
@@ -247,6 +258,11 @@ body {
 
 }
 @media only screen and (min-width:950px) {
+    .full--img {
+        display: block;
+        width: 70%;
+        max-width: 900px;
+    }
     #recipes {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
