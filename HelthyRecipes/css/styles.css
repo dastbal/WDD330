@@ -18,7 +18,7 @@ img {
     text-align: center;
 }
 
-body {
+body ,input[type='button'] {
     font-family: 'Righteous', cursive;
 }
 
@@ -189,13 +189,25 @@ body {
 
 .recipe--container button {
     width: 3rem;
-    padding: 1rem 1rem;
     font-size: 1.3rem;
     text-align: center;
     margin-top: 1rem;
     border: none;
     background-color: transparent;
     color: var(--blue);
+}
+input[type='button']{
+    margin-top: 1rem;
+    border: none;
+    background-color: transparent;
+    font-size: 1.3rem;
+    color: black;
+
+}
+.recipe:hover  input[type='button']{
+    
+    color: red;
+
 }
 .recipe--container button:hover {
     
