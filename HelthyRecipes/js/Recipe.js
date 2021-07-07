@@ -1,24 +1,33 @@
 import {writeToLS, readFromLS} from './ls.js'
 
 async function getNutritionById(id){
-    const URLNutrition = `https://api.spoonacular.com/recipes/${id}/nutritionWidget.json?apiKey=c3286084e4694807b2748e3695e0680e`;
+    const URLNutrition = `https://api.spoonacular.com/recipes/${id}/nutritionWidget.json?apiKey=50beb9fb40e8402697ce61fdd4dcb28f`;
     const response = await fetch(URLNutrition);
     const data = await  response.json();
     return data
     
 }
 async function getInstructionsById(id){
-    const URLInstructions = `https://api.spoonacular.com/recipes/${id}/analyzedInstructions?apiKey=c3286084e4694807b2748e3695e0680e`;
+    try{
+    const URLInstructions = `https://api.spoonacular.com/recipes/${id}/analyzedInstructions?apiKey=50beb9fb40e8402697ce61fdd4dcb28f`;
     const response = await fetch(URLInstructions);
     const data = await  response.json();
     return data
+    }catch{
+        return null;
+    }
     
 }
 async function getIngridientsById(id){
-    const URLIngridients = `https://api.spoonacular.com/recipes/${id}/ingredientWidget.json?apiKey=c3286084e4694807b2748e3695e0680e`;
-    const response = await fetch(URLIngridients);
-    const data = await  response.json();
-    return data
+    try{
+
+        const URLIngridients = `https://api.spoonacular.com/recipes/${id}/ingredientWidget.json?apiKey=50beb9fb40e8402697ce61fdd4dcb28f`;
+        const response = await fetch(URLIngridients);
+        const data = await  response.json();
+        return data;
+    }catch{
+        return null;
+    }
     
 }
 
@@ -26,27 +35,49 @@ async function getIngridientsById(id){
 function getRecipesFromLs(){
     const favoriteRecipes = readFromLS();
     return favoriteRecipes;
+    
+}
 
+//get favorite Ids from localstorage
+function getFavoriteIds(){
+    const favoriteRecipes = getRecipesFromLs();
+    const ids = [];
+    favoriteRecipes.forEach(favoriteRecipe=>{
+        ids.push(favoriteRecipe.id)
+
+    })
+    return ids
 }
 
 
-function saveRecipeLs(newRecipe, favorite){
+function saveRecipeLs(newRecipe, favoriteId){
+    const ids = getFavoriteIds();
     const favoriteRecipes =getRecipesFromLs();
-    // recieve all the recipes so   this filter the recipes by the id to save the choosen recipe
-    newRecipe.results.forEach(element => {
-        const { id, title, image} = element;
-        if(id == favorite){
+    // if the new favoritwe recipe is saved   wiil not be saved again  ( I wanted to use includes but it was not working ?? so I decided to use this)
+    const isEmpty = ids.filter(id=> id ==favoriteId )
+    
+    if(isEmpty.length != 0){
+        console.log('Esta repetido')
 
-            const favoriteRecipe ={
-                id:id,
-                title:title,
-                image:image,
-            }
-            favoriteRecipes.push(favoriteRecipe)
-        }
+    }else{
+        console.log('NO  esta repetido')
         
-    });
-    writeToLS(favoriteRecipes);
+        // recieve all the recipes so   this filter the recipes by the id to save the choosen recipe
+        newRecipe.results.forEach(element => {
+            const { id, title, image} = element;
+            if(id == favoriteId){
+                
+                const favoriteRecipe ={
+                    id:id,
+                    title:title,
+                    image:image,
+                }
+                favoriteRecipes.push(favoriteRecipe)
+            }
+            
+        });
+        writeToLS(favoriteRecipes);
+    }
 }
 
 
@@ -60,4 +91,5 @@ function removeRecipeLs(favorite){
 writeToLS(removed);
 }
 
-export {saveRecipeLs,getRecipesFromLs,removeRecipeLs,getNutritionById ,getIngridientsById,getInstructionsById}
+
+export {saveRecipeLs,getRecipesFromLs,removeRecipeLs,getNutritionById ,getIngridientsById,getInstructionsById ,getFavoriteIds}

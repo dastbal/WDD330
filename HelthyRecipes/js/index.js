@@ -1,4 +1,4 @@
-import {saveRecipeLs,getRecipesFromLs,removeRecipeLs,getNutritionById,getIngridientsById,getInstructionsById} from './Recipe.js'
+import {saveRecipeLs,getRecipesFromLs,removeRecipeLs,getNutritionById,getIngridientsById,getInstructionsById ,getFavoriteIds} from './Recipe.js'
 import { showSearchInput ,createFavoriteRecipes, createSearchRecipes, createRecipeDetail} from './RecipeViews.js'
 
 
@@ -14,7 +14,7 @@ window.addEventListener('load',showFavoriteRecipes)
 
 
 async function getJSON(){
-    const API = 'https://api.spoonacular.com/recipes/complexSearch?apiKey=c3286084e4694807b2748e3695e0680e&query=';
+    const API = 'https://api.spoonacular.com/recipes/complexSearch?apiKey=50beb9fb40e8402697ce61fdd4dcb28f&query=';
 
     const response = await fetch(API);
     const data = await  response.json();
@@ -26,7 +26,7 @@ console.log(data)
 
 //
 async function getRecipeSearch(){
-    const API = 'https://api.spoonacular.com/recipes/complexSearch?apiKey=c3286084e4694807b2748e3695e0680e&query=';
+    const API = 'https://api.spoonacular.com/recipes/complexSearch?apiKey=50beb9fb40e8402697ce61fdd4dcb28f&query=';
 
     const searchInput = document.getElementById('searchInput').value;
     const URL = `${API+searchInput}`
@@ -35,11 +35,18 @@ async function getRecipeSearch(){
     return data
     
 }
+
+
+
 //  this function will render  the html of the serac recipes
 async function showSearchRecipes(){
     root.innerHTML = ''
     const dataInfo = await getRecipeSearch();
-    const recipes = createSearchRecipes(dataInfo);
+    // obtain the ids from all favorite recipes saved in localstorage
+    const favoriteIds = getFavoriteIds()
+    console.log(favoriteIds)
+
+    const recipes = createSearchRecipes(dataInfo,favoriteIds);
     root.appendChild(recipes);
 
     let seeDetails = document.getElementsByClassName('details');
@@ -65,6 +72,8 @@ async function showFavoriteRecipes(){
     // adding the event  loistener to remove the recipe
     removeFavoriteListener()    
 }
+
+
 // this make a request and then call the  function to show the recipes
 function searchRecipes(e){
     console.log(e)

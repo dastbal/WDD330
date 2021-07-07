@@ -194,7 +194,7 @@ body {
     text-align: center;
     margin-top: 1rem;
     border: none;
-    background-color: var(--green);
+    background-color: transparent;
     color: var(--blue);
 }
 .recipe--container button:hover {

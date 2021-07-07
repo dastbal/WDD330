@@ -29,24 +29,42 @@ const createFavoriteRecipes = (favoriteRecipes)=>{
     return favoriteRecipesContainer;
 
 }
-const createSearchRecipes = (RecipesSearch)=>{
+const createSearchRecipes = (RecipesSearch,favoriteIds)=>{
     const recipes = document.createElement('div');
     recipes.id= 'recipes';
     RecipesSearch.results.forEach(element => {
         const { id, title, image} = element;
-        const recipe = document.createElement('div');
-        recipe.classList.add('recipe');
-        recipe.id = `${id}`
-        recipe.innerHTML =` 
-        <div  class="recipe--img">
-        <img src="${image}" alt="${title}">
-        </div>
-        <div class="recipe--container">
-        <p>${title}</p>
-        <button  class='btnFavorite'  ><i   class="fas fa-heart"></i></button>
-        <input type='button' value='See Details..'  class='details'  ></input>
-        </div>`;
-        recipes.appendChild(recipe);
+        if(favoriteIds.includes(id)){
+            const recipe = document.createElement('div');
+            recipe.classList.add('recipe');
+            recipe.id = `${id}`
+            recipe.innerHTML =` 
+            <div  class="recipe--img">
+            <img src="${image}" alt="${title}">
+            </div>
+            <div class="recipe--container">
+            <p>${title}</p>
+            <button  class='btnFavorite favorite'  ><i   class="fas fa-heart"></i></button>
+            <input type='button' value='See Details..'  class='details'  ></input>
+            </div>`;
+            recipes.appendChild(recipe);
+            
+        }else{
+
+            const recipe = document.createElement('div');
+            recipe.classList.add('recipe');
+            recipe.id = `${id}`
+            recipe.innerHTML =` 
+            <div  class="recipe--img">
+            <img src="${image}" alt="${title}">
+            </div>
+            <div class="recipe--container">
+            <p>${title}</p>
+            <button  class='btnFavorite'  ><i   class="fas fa-heart"></i></button>
+            <input type='button' value='See Details..'  class='details'  ></input>
+            </div>`;
+            recipes.appendChild(recipe);
+        }
         
 
         
@@ -84,6 +102,13 @@ const createIngridientsDetail = (ingredientsObject )=>{
     return ingredientsContainer;
 }
 const createInstructionsDetail = (instructi)=>{
+    if(instructi.length == 0){
+        const instructionsContainer = document.createElement('div');
+    instructionsContainer.classList.add('instructions');
+    instructionsContainer.innerHTML =`<h2>Instructions are not available</h2> `;
+    return instructionsContainer;
+
+    }else{
     const instructionsContainer = document.createElement('div');
     instructionsContainer.classList.add('instructions');
     instructionsContainer.innerHTML =`<h2>Instructions</h2> <ul>`;
@@ -95,8 +120,11 @@ const createInstructionsDetail = (instructi)=>{
     instructionsContainer.innerHTML +=`</ul>`;
     console.log(instructionsContainer)
     return instructionsContainer;
+    }
 };
+
 const createRecipeDetail= (id,nutrition,ingridients,instructions)=>{
+   
     const recipeDetailContainer = document.createElement('div')
     recipeDetailContainer.id= `full`;
     const html1 =createNutritionDetail(nutrition);      
@@ -121,8 +149,7 @@ const createRecipeDetail= (id,nutrition,ingridients,instructions)=>{
     console.log(recipeDetailContainer);
 
     return recipeDetailContainer;
-
-
+                  
 };
 
 
