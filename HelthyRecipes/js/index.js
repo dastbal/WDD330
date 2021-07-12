@@ -1,5 +1,18 @@
-import {saveRecipeLs,getRecipesFromLs,removeRecipeLs,getNutritionById,getIngridientsById,getInstructionsById ,getFavoriteIds} from './Recipe.js'
-import { showSearchInput ,createFavoriteRecipes, createSearchRecipes, createRecipeDetail} from './RecipeViews.js'
+import {
+    saveRecipeLs,
+    getRecipesFromLs,
+    removeRecipeLs,
+    getNutritionById,
+    getIngridientsById,
+    getInstructionsById ,
+    getFavoriteIds,
+    saveLastRecipeLs,
+    getLastRecipesFromLs } from './Recipe.js'
+import { 
+    showSearchInput ,
+    createFavoriteRecipes, 
+    createSearchRecipes, 
+    createRecipeDetail } from './RecipeViews.js'
 
 
 const root = document.getElementById('container')
@@ -22,7 +35,6 @@ async function getJSON(){
     
 }
 const data = await getJSON();
-console.log(data)
 
 //
 async function getRecipeSearch(){
@@ -36,18 +48,24 @@ async function getRecipeSearch(){
     
 }
 
+function render(element,data,callback){
+    callback(element,data);
 
+}
 
 //  this function will render  the html of the serac recipes
-async function showSearchRecipes(){
-    root.innerHTML = ''
-    const dataInfo = await getRecipeSearch();
+function showSearchRecipes(element,dataInfo){
+    element.innerHTML = '';
+    // save the data from the request
+    saveLastRecipeLs(dataInfo);
+
     // obtain the ids from all favorite recipes saved in localstorage
-    const favoriteIds = getFavoriteIds()
-    console.log(favoriteIds)
+    const favoriteIds = getFavoriteIds();
+    console.log(favoriteIds);
+    console.log(getLastRecipesFromLs());
 
     const recipes = createSearchRecipes(dataInfo,favoriteIds);
-    root.appendChild(recipes);
+    element.appendChild(recipes);
 
     let seeDetails = document.getElementsByClassName('details');
     seeDetails = Array.from(seeDetails)
@@ -55,9 +73,9 @@ async function showSearchRecipes(){
 
         seeDetail.addEventListener('click',e =>{showRecipeDetail(e)})
     })
-    
-
 }
+
+
 // show Favorite recipes
 async function showFavoriteRecipes(){
     favoriteContainer.innerHTML= '';
@@ -72,15 +90,16 @@ async function showFavoriteRecipes(){
     // adding the event  loistener to remove the recipe
     removeFavoriteListener()    
 }
-
-
 // this make a request and then call the  function to show the recipes
-function searchRecipes(e){
+async function searchRecipes(e){
     console.log(e)
     e.preventDefault();
     root.innerHTML= `<h3 class='load' > Loading... </h3>`;
-    // const dataInfo = await getRecipeSearch();
-    showSearchRecipes();
+
+    const dataInfo = await getRecipeSearch(); 
+    console.log(dataInfo);   
+    render(root,dataInfo,showSearchRecipes)
+
     // add listener to add favorite
     addFavoriteListener();    
 }
@@ -135,16 +154,32 @@ async function showRecipeDetail(event){
     const instrutions = await getInstructionsById(id);
     console.log(instrutions);
     const recipeDetail = createRecipeDetail(id,nutrition,ingridients,instrutions);
+    root.innerHTML = '';
     root.append(recipeDetail);
+
+    // create listener
+    let btnBack = document.getElementById('btnBack');
+    btnBack.addEventListener('click',goBack )
+
 
 }
 let form = document.getElementById('search');
-form.addEventListener('submit', e =>{searchRecipes(e)});
+form.addEventListener('submit', (e)=>{searchRecipes(e)});
 
-const nutrition = await getNutritionById(716426)
-console.log(nutrition)
-const ingridients = await getIngridientsById(716426)
-console.log(ingridients)
-const instru = await getInstructionsById(716426)
-console.log(instru)
+
+
+function goBack(){
+    const lastRecipes = getLastRecipesFromLs();
+    render(root,lastRecipes,showSearchRecipes)
+    
+
+}
+
+
+// const nutrition = await getNutritionById(716426)
+// console.log(nutrition)
+// const ingridients = await getIngridientsById(716426)
+// console.log(ingridients)
+// const instru = await getInstructionsById(716426)
+// console.log(instru)
 

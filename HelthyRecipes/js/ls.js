@@ -1,7 +1,7 @@
 
 
-function readFromLS(){
-    let data = JSON.parse(localStorage.getItem('data'));
+function readFromLS(key){
+    let data = JSON.parse(localStorage.getItem(key));
     if (data==null){
         data = []
         return data
@@ -10,8 +10,8 @@ function readFromLS(){
     return data
     }
 
-function writeToLS( data){ 
-    localStorage.setItem('data',JSON.stringify(data))
+function writeToLS( key,data){ 
+    localStorage.setItem(key,JSON.stringify(data))
 
 
 }

@@ -33,7 +33,7 @@ async function getIngridientsById(id){
 
 
 function getRecipesFromLs(){
-    const favoriteRecipes = readFromLS();
+    const favoriteRecipes = readFromLS("favoriteRecipes");
     return favoriteRecipes;
     
 }
@@ -48,7 +48,6 @@ function getFavoriteIds(){
     })
     return ids
 }
-
 
 function saveRecipeLs(newRecipe, favoriteId){
     const ids = getFavoriteIds();
@@ -76,11 +75,9 @@ function saveRecipeLs(newRecipe, favoriteId){
             }
             
         });
-        writeToLS(favoriteRecipes);
+        writeToLS("favoriteRecipes",favoriteRecipes);
     }
 }
-
-
 
 function removeRecipeLs(favorite){
     const favoriteRecipes =getRecipesFromLs();
@@ -88,8 +85,18 @@ function removeRecipeLs(favorite){
         const { id} = element;
          return id != favorite
     });
-writeToLS(removed);
+writeToLS("favoriteRecipes",removed);
+}
+
+//   function to save the las resquest to be render if client click button goback
+function getLastRecipesFromLs(){
+    const lastRecipes = readFromLS("lastRecipes");
+    return lastRecipes; 
+}
+function saveLastRecipeLs(recipes){
+    // the last request is override in the localStore so I do not  need remove it
+    writeToLS("lastRecipes",recipes);
 }
 
 
-export {saveRecipeLs,getRecipesFromLs,removeRecipeLs,getNutritionById ,getIngridientsById,getInstructionsById ,getFavoriteIds}
+export {saveRecipeLs,getRecipesFromLs,removeRecipeLs,getNutritionById ,getIngridientsById,getInstructionsById,saveLastRecipeLs,getLastRecipesFromLs ,getFavoriteIds}
