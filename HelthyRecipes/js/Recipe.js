@@ -1,7 +1,7 @@
 import {writeToLS, readFromLS} from './ls.js'
 
 async function getNutritionById(id){
-    const URLNutrition = `https://api.spoonacular.com/recipes/${id}/nutritionWidget.json?apiKey=50beb9fb40e8402697ce61fdd4dcb28f`;
+    const URLNutrition = `https://api.spoonacular.com/recipes/${id}/nutritionWidget.json?apiKey=c3286084e4694807b2748e3695e0680e`;
     const response = await fetch(URLNutrition);
     const data = await  response.json();
     return data
@@ -9,7 +9,7 @@ async function getNutritionById(id){
 }
 async function getInstructionsById(id){
     try{
-    const URLInstructions = `https://api.spoonacular.com/recipes/${id}/analyzedInstructions?apiKey=50beb9fb40e8402697ce61fdd4dcb28f`;
+    const URLInstructions = `https://api.spoonacular.com/recipes/${id}/analyzedInstructions?apiKey=c3286084e4694807b2748e3695e0680e`;
     const response = await fetch(URLInstructions);
     const data = await  response.json();
     return data
@@ -21,7 +21,7 @@ async function getInstructionsById(id){
 async function getIngridientsById(id){
     try{
 
-        const URLIngridients = `https://api.spoonacular.com/recipes/${id}/ingredientWidget.json?apiKey=50beb9fb40e8402697ce61fdd4dcb28f`;
+        const URLIngridients = `https://api.spoonacular.com/recipes/${id}/ingredientWidget.json?apiKey=c3286084e4694807b2748e3695e0680e`;
         const response = await fetch(URLIngridients);
         const data = await  response.json();
         return data;

@@ -253,21 +253,88 @@ input[type='button']{
 
 }
 .full--img img {
-    width: 90%;
+    width: 100%;
     height: 300px;
-    margin: 0 5%;
+    margin: 0;
 }
 .full--container{
-    padding: 0 1.6rem;
+
+    margin-top: 5rem;
+    padding: 0 ;
+    position: relative;
 }
+.full--container h2{
+    background-color: var(--blue);
+    color: white;
+}
+
+
+
 .instructions h2{
 text-align: center;}
-.top {
+/* .top {
     display: flex;
     justify-content: space-between;
     margin: 0.5rem 0;
+} */
+.instructions {
+    position: absolute;
+    width: 100%;
+    right: 0;
+    text-align: center;
+
+
+
+}
+.instructions h2 {
+    position: absolute;
+    right: 0;
+    top: -5.3rem;
+    width: 50%;
+    padding: 0.2rem 0;
+    border: 2px solid black ;
+
+
+}
+.ingridients{
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    
+}
+.ingridients h2 {
+    text-align: center;
+    position: absolute;
+    left: 0;
+    top: -5.3rem;
+    width: 50%;
+    padding: 0.2rem 0;
+    border: 2px solid black ;
+
+
+}
+.nutrition{
+    position: absolute;
+    width: 100%;
+    text-align: center;
+}
+.nutrition h2 {
+    text-align: center;
+    position: absolute;
+    top: -3rem;
+    width: 100%;
+    padding: 0.3rem 0;
+
+    
 }
 
+
+.instructions ul ,.ingridients  ul, .nutrition ul{
+    opacity: 0;
+}
+.instructions h2.hidden  + ul ,.ingridients h2.hidden  + ul, .nutrition h2.hidden + ul{
+    opacity: 1;
+}
 .instructions {
     margin-bottom: 1rem;
 }

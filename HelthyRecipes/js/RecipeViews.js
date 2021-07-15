@@ -76,8 +76,8 @@ const createNutritionDetail = (nutrition )=>{
 const nutritionContainer = document.createElement('div');
 nutritionContainer.classList.add('nutrition')
 nutritionContainer.innerHTML=`
-<h2>Nutrition</h2>
-<ul>
+<h2 class='title' >Nutrition</h2>
+<ul >
     <li> Calories: ${calories}</li>
     <li>Carbs: ${carbs}</li>
     <li>Fat: ${fat}</li>
@@ -90,13 +90,15 @@ console.log(nutritionContainer);
 const createIngridientsDetail = (ingredientsObject )=>{
     const ingredientsContainer = document.createElement('div');
     ingredientsContainer.classList.add('ingridients');
-    ingredientsContainer.innerHTML ='<h2>Ingredients</h2> <ul>';
+    ingredientsContainer.innerHTML ='<h2 class="title">Ingredients</h2>';
+    const ul = document.createElement('ul');
+
     ingredientsObject.ingredients.forEach(ingredient => {
         const {name} = ingredient ;
         const {unit,value} = ingredient.amount.metric ;
-        ingredientsContainer.innerHTML +=`<li> ${name} Amount: ${value}${unit==''? '':'-'}${unit}</li>`
+        ul.innerHTML +=`<li> ${name} Amount: ${value}${unit==''? '':'-'}${unit}</li>`
     });
-    ingredientsContainer.innerHTML +=`</ul>`;
+    ingredientsContainer.append(ul);
     console.log(ingredientsContainer);
     
     return ingredientsContainer;
@@ -105,19 +107,21 @@ const createInstructionsDetail = (instructi)=>{
     if(instructi.length == 0){
         const instructionsContainer = document.createElement('div');
     instructionsContainer.classList.add('instructions');
-    instructionsContainer.innerHTML =`<h2>Instructions are not available</h2> `;
+    instructionsContainer.innerHTML =`<h2 class='title'>Instructions are not available</h2> `;
     return instructionsContainer;
 
     }else{
     const instructionsContainer = document.createElement('div');
+    const ul = document.createElement('ul');
     instructionsContainer.classList.add('instructions');
-    instructionsContainer.innerHTML =`<h2>Instructions</h2> <ul>`;
+    instructionsContainer.innerHTML =`<h2 class='title'>Instructions</h2>`;
+
     instructi[0].steps.forEach(instruction => {
         
         const {number, step} = instruction;
-        instructionsContainer.innerHTML +=`<li>${number} - ${step}</li> `;
+        ul.innerHTML +=`<li>${number} - ${step}</li> `;
     });
-    instructionsContainer.innerHTML +=`</ul>`;
+    instructionsContainer.append(ul);
     console.log(instructionsContainer)
     return instructionsContainer;
     }
@@ -140,10 +144,10 @@ const createRecipeDetail= (id,nutrition,ingridients,instructions)=>{
     
     const fullContainer =document.createElement('div');
     fullContainer.classList.add('full--container')
-    const top =document.createElement('div');
-    top.classList.add('top')
-    top.append(html1,html2)
-    fullContainer.append(top,html3)
+    // const top =document.createElement('div');
+    // top.classList.add('top')
+    // top.append(html1,html2)
+    fullContainer.append(html1,html2,html3)
     
     recipeDetailContainer.append(fullContainer);
     console.log(recipeDetailContainer);

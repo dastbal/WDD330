@@ -27,7 +27,7 @@ window.addEventListener('load',showFavoriteRecipes)
 
 
 async function getJSON(){
-    const API = 'https://api.spoonacular.com/recipes/complexSearch?apiKey=50beb9fb40e8402697ce61fdd4dcb28f&query=';
+    const API = 'https://api.spoonacular.com/recipes/complexSearch?apiKey=c3286084e4694807b2748e3695e0680e&query=';
 
     const response = await fetch(API);
     const data = await  response.json();
@@ -38,7 +38,7 @@ const data = await getJSON();
 
 //
 async function getRecipeSearch(){
-    const API = 'https://api.spoonacular.com/recipes/complexSearch?apiKey=50beb9fb40e8402697ce61fdd4dcb28f&query=';
+    const API = 'https://api.spoonacular.com/recipes/complexSearch?apiKey=c3286084e4694807b2748e3695e0680e&query=';
 
     const searchInput = document.getElementById('searchInput').value;
     const URL = `${API+searchInput}`
@@ -143,6 +143,34 @@ function removeFavoriteRecipe(event){
     // render again new info
     showFavoriteRecipes()
 }
+function changeText(e){
+    const classes = Array.from(e.target.classList)
+    if(classes.includes('title') ){
+        console.log(' it is the title')
+        if (classes.includes('hidden')){
+            
+            e.target.classList.remove('hidden')
+        }else{
+            e.target.classList.add('hidden')
+        }
+    }
+}
+
+function listenerRecipeDetail(){
+    const nutrition = document.getElementsByClassName('nutrition');
+    const ingridients = document.getElementsByClassName('ingridients');
+    const instructions = document.getElementsByClassName('instructions');
+    const infos = [ nutrition[0],ingridients[0],instructions[0]];
+    console.log(infos)
+    infos.forEach(info => {
+        info.addEventListener('click' , e=>{
+            changeText(e)
+            console.log(e)
+        });
+    })
+    
+}
+
 
 
 async function showRecipeDetail(event){
@@ -160,6 +188,8 @@ async function showRecipeDetail(event){
     // create listener
     let btnBack = document.getElementById('btnBack');
     btnBack.addEventListener('click',goBack )
+
+    listenerRecipeDetail()
 
 
 }
