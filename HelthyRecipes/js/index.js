@@ -7,7 +7,9 @@ import {
     getInstructionsById ,
     getFavoriteIds,
     saveLastRecipeLs,
-    getLastRecipesFromLs } from './Recipe.js'
+    getLastRecipesFromLs,
+    getNameRecipeById,
+    } from './Recipe.js'
 import { 
     showSearchInput ,
     createFavoriteRecipes, 
@@ -30,7 +32,7 @@ window.addEventListener('load',showFavoriteRecipes)
 
 
 async function getJSON(){
-    const API = 'https://api.spoonacular.com/recipes/complexSearch?apiKey=c3286084e4694807b2748e3695e0680e&query=';
+    const API = 'https://api.spoonacular.com/recipes/complexSearch?apiKey=3f11ab0861ed41e8b7f471057acf8013&query=';
 
     const response = await fetch(API);
     const data = await  response.json();
@@ -41,7 +43,7 @@ const data = await getJSON();
 
 //
 async function getRecipeSearch(){
-    const API = 'https://api.spoonacular.com/recipes/complexSearch?apiKey=c3286084e4694807b2748e3695e0680e&query=';
+    const API = 'https://api.spoonacular.com/recipes/complexSearch?apiKey=3f11ab0861ed41e8b7f471057acf8013&query=';
 
     const searchInput = document.getElementById('searchInput').value;
     const URL = `${API+searchInput}`
@@ -183,13 +185,15 @@ function listenerRecipeDetail(){
 
 async function showRecipeDetail(event){
     const id = event.path[2].id;
+    const name = await getNameRecipeById(id);
+    console.log(name);
     const nutrition = await getNutritionById(id);
     console.log(nutrition);
     const ingridients = await getIngridientsById(id);
     console.log(ingridients);
     const instrutions = await getInstructionsById(id);
     console.log(instrutions);
-    const recipeDetail = createRecipeDetail(id,nutrition,ingridients,instrutions);
+    const recipeDetail = createRecipeDetail(id,name,nutrition,ingridients,instrutions);
     root.innerHTML = '';
     root.append(recipeDetail);
 

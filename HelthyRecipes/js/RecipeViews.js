@@ -61,13 +61,17 @@ const createSearchRecipes = (RecipesSearch,favoriteIds)=>{
             <div class="recipe--container">
             <p>${title}</p>
             <button  class='btnFavorite'  ><i   class="fas fa-heart"></i></button>
-            <input type='button' value='See Details..'  class='details'  ></input>
+            <div>
+            <i   class="arrow l fas fa-long-arrow-alt-right"></i>
+            <input type='button' value='See Details'  class='details'  >
+            <i   class=" arrow r fas fa-long-arrow-alt-left"></i>
+            </div>
             </div>`;
             recipes.appendChild(recipe);
         }
         
 
-        
+    
     });
     return recipes;
 }
@@ -127,7 +131,7 @@ const createInstructionsDetail = (instructi)=>{
     }
 };
 
-const createRecipeDetail= (id,nutrition,ingridients,instructions)=>{
+const createRecipeDetail= (id,name,nutrition,ingridients,instructions)=>{
    
     const recipeDetailContainer = document.createElement('div')
     recipeDetailContainer.id= `full`;
@@ -138,6 +142,7 @@ const createRecipeDetail= (id,nutrition,ingridients,instructions)=>{
 
     recipeDetailContainer.innerHTML =`
     <button  id='btnBack' ><i class="fas fa-long-arrow-alt-left"></i></button>
+    <h2> ${name}</h2>
     <div class="full--img">
         <img src="https://spoonacular.com/recipeImages/${id}-556x370.jpg" alt="Full recipe">
     </div>`;

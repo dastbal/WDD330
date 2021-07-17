@@ -205,16 +205,35 @@ body ,input[type='button'] {
     color: var(--blue);
 }
 input[type='button']{
+    display: inline;
     margin-top: 1rem;
     border: none;
-    background-color: transparent;
+    background-color: rgba(255, 255, 255, 0);
     font-size: 1.3rem;
     color: black;
-
+    
+}
+i.l{
+    color: #1A759F;
+    display: inline-block;
+    animation: arrowl 2s infinite ease-in-out infinite alternate;
+}
+i.r{
+    color: #1A759F;
+    display: inline-block;
+    animation: arrowr 2s infinite ease-in-out infinite alternate;
+}
+@keyframes arrowl {
+    0%{ transform: translateX(-5px);}
+    25%{transform: translateX(7px) ;}
+    50%{transform: translateX(15px);}
+    75%{transform: translateX(7px);}
+    100%{transform: translateX(-1px);}
+    
 }
 .recipe:hover  input[type='button']{
     
-    color: red;
+    color:var(--blue);
 
 }
 .recipe--container button:hover {
@@ -226,6 +245,12 @@ input[type='button']{
 #full{
     display: flex;
     flex-direction: column;
+    
+    
+}
+#full h2{
+    text-align: center;
+    font-size: 1.8rem;
     
 }
 #full li{
@@ -264,6 +289,7 @@ input[type='button']{
     width: 100%;
     height: 300px;
     margin: 0;
+    padding: 0;
 }
 .full--container{
 
@@ -273,7 +299,8 @@ input[type='button']{
 }
 .full--container h2{
     background-color: var(--blue);
-    color: white;
+    color:  white;
+    font-weight: 100;
     cursor: pointer;
 }
 
@@ -440,6 +467,23 @@ text-align: center;}
 .explanation h3,.explanation h4 {
     margin: 0.3rem 0;
 
+}
+.explanation i {
+    margin-left: 0.5rem;
+    font-size: 1.2rem;
+    animation: heart 3s ease-in-out infinite;
+    perspective: 30px;
+}
+@keyframes heart {
+    to{
+        transform: rotateY(0);
+        
+    }
+    from{
+        transform: rotateY(360deg);
+
+    }
+    
 }
 @keyframes explanation {
     0%{transform: scaleX(0);
