@@ -18,6 +18,9 @@ import {
 const root = document.getElementById('container')
 const containerSearch = document.getElementById('containerSearch')
 const favoriteContainer = document.createElement('div')
+const nutrition = document.getElementsByClassName('nutrition');
+const ingridients = document.getElementsByClassName('ingridients');
+const instructions = document.getElementsByClassName('instructions');
 favoriteContainer.classList.add('favoriteRecipes')
 
 
@@ -147,25 +150,30 @@ function changeText(e){
     const classes = Array.from(e.target.classList)
     if(classes.includes('title') ){
         console.log(' it is the title')
-        if (classes.includes('hidden')){
+        let titles = document.getElementsByClassName('title');
+        titles = Array.from(titles)
+        titles.forEach( title=>{
             
-            e.target.classList.remove('hidden')
-        }else{
+            title.classList.remove('hidden')
+        }
+        
+        )
+        if (!classes.includes('hidden')){
+          
+            
             e.target.classList.add('hidden')
         }
     }
 }
 
+
 function listenerRecipeDetail(){
-    const nutrition = document.getElementsByClassName('nutrition');
-    const ingridients = document.getElementsByClassName('ingridients');
-    const instructions = document.getElementsByClassName('instructions');
+   
     const infos = [ nutrition[0],ingridients[0],instructions[0]];
     console.log(infos)
     infos.forEach(info => {
         info.addEventListener('click' , e=>{
             changeText(e)
-            console.log(e)
         });
     })
     

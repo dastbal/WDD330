@@ -54,6 +54,8 @@ body ,input[type='button'] {
 }
 
 .favoriteRecipe {
+    cursor: pointer;
+
     position: relative;
     display: flex;
     flex-direction: column;
@@ -74,6 +76,8 @@ body ,input[type='button'] {
 }
 .favoriteRecipe:hover button {
     opacity: 1;
+    cursor: pointer;
+
     
 }
 
@@ -105,6 +109,8 @@ body ,input[type='button'] {
     flex-direction: column;
     place-items: center;
     padding: 2rem 0;
+    cursor: pointer;
+
 }
 
 #search .search--header {
@@ -189,6 +195,7 @@ body ,input[type='button'] {
 }
 
 .recipe--container button {
+    cursor: pointer;
     width: 3rem;
     font-size: 1.3rem;
     text-align: center;
@@ -236,6 +243,7 @@ input[type='button']{
     margin: 3rem 0;
 }
 #btnBack{
+    cursor: pointer;
     top: -3rem;
     width: 2rem;
     font-size: 3rem;
@@ -266,6 +274,7 @@ input[type='button']{
 .full--container h2{
     background-color: var(--blue);
     color: white;
+    cursor: pointer;
 }
 
 
