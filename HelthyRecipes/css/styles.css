@@ -97,10 +97,10 @@ body ,input[type='button'] {
     width: 80px;
     border-radius: 50%;
     overflow: hidden ;
-    border: solid  0.26rem  white;
+    border: solid  0.29rem  white;
     position: relative;
     border-right-color: black;
-    animation: turn 0.5s linear infinite;
+    animation: turn 6s linear infinite;
 }
 .favoriteRecipe--img {
     position: absolute;
