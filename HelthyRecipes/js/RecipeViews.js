@@ -11,6 +11,7 @@
 
 const createFavoriteRecipes = (favoriteRecipes)=>{
     const favoriteRecipesContainer = document.createElement('div');
+    const div= document.createElement('div');
     favoriteRecipesContainer.id = 'favoriteRecipes'
     favoriteRecipes.forEach(favoriteRecipe =>{
         const {id,title,image} = favoriteRecipe;
