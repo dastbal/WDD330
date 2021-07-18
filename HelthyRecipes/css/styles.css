@@ -88,19 +88,49 @@ body ,input[type='button'] {
 
 
 
-.favoriteRecipe--img {
+.favoriteRecipe--img-b {
+    
     display: flex;
     justify-content: center;
     align-items: center;
     height: 80px;
     width: 80px;
     border-radius: 50%;
-    overflow: hidden;
-    border: solid  0.2rem  white;
+    overflow: hidden ;
+    border: solid  0.29rem  white;
+    position: relative;
+    border-right-color: black;
+    animation: turn 0.5s linear infinite;
 }
+.favoriteRecipe--img {
+    position: absolute;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    width: 80px;
+    border-radius: 80px;
+    overflow: hidden ;
+    border: solid  0.2rem  white;
+    
+    
+}
+@keyframes turn {
+    to{ 
+        transform: rotate(0);
+    }
+    from{
+        transform: rotate(-360deg);
+    }
+    
+}
+
 .favoriteRecipe--img img {
+   
  width: 100%;
  height: 100%;
+
 }
 
 
@@ -213,24 +243,8 @@ input[type='button']{
     color: black;
     
 }
-i.l{
-    color: #1A759F;
-    display: inline-block;
-    animation: arrowl 2s infinite ease-in-out infinite alternate;
-}
-i.r{
-    color: #1A759F;
-    display: inline-block;
-    animation: arrowr 2s infinite ease-in-out infinite alternate;
-}
-@keyframes arrowl {
-    0%{ transform: translateX(-5px);}
-    25%{transform: translateX(7px) ;}
-    50%{transform: translateX(15px);}
-    75%{transform: translateX(7px);}
-    100%{transform: translateX(-1px);}
-    
-}
+
+
 .recipe:hover  input[type='button']{
     
     color:var(--blue);
@@ -245,6 +259,7 @@ i.r{
 #full{
     display: flex;
     flex-direction: column;
+    margin-bottom: 2rem;
     
     
 }
@@ -266,6 +281,7 @@ i.r{
 #full{
     position: relative;
     margin: 3rem 0;
+    
 }
 #btnBack{
     cursor: pointer;
@@ -367,10 +383,14 @@ text-align: center;}
 
 .instructions ul ,.ingridients  ul, .nutrition ul{
     opacity: 0;
+    margin-bottom: 2rem;
 }
+
 .instructions h2.hidden  + ul ,.ingridients h2.hidden  + ul, .nutrition h2.hidden + ul{
     opacity: 1;
 }
+
+
 .instructions {
     margin-bottom: 1rem;
 }

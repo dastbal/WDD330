@@ -18,6 +18,9 @@ const createFavoriteRecipes = (favoriteRecipes)=>{
         favoriteRecipeContainer.classList.add('favoriteRecipe')
         favoriteRecipeContainer.innerHTML =`
         <button class='removeFavoriteRecipe' id="${id}">x</button>
+
+        <div class="favoriteRecipe--img-b">
+        </div>
         <div class="favoriteRecipe--img">
             <img src="${image}" alt="${title}">
         </div>
@@ -61,11 +64,9 @@ const createSearchRecipes = (RecipesSearch,favoriteIds)=>{
             <div class="recipe--container">
             <p>${title}</p>
             <button  class='btnFavorite'  ><i   class="fas fa-heart"></i></button>
-            <div>
-            <i   class="arrow l fas fa-long-arrow-alt-right"></i>
+            
             <input type='button' value='See Details'  class='details'  >
-            <i   class=" arrow r fas fa-long-arrow-alt-left"></i>
-            </div>
+            
             </div>`;
             recipes.appendChild(recipe);
         }

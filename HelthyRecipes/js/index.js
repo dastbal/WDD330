@@ -66,7 +66,6 @@ function showSearchRecipes(element,dataInfo){
 
     // obtain the ids from all favorite recipes saved in localstorage
     const favoriteIds = getFavoriteIds();
-    console.log(favoriteIds);
     console.log(getLastRecipesFromLs());
 
     const recipes = createSearchRecipes(dataInfo,favoriteIds);
@@ -97,12 +96,10 @@ async function showFavoriteRecipes(){
 }
 // this make a request and then call the  function to show the recipes
 async function searchRecipes(e){
-    console.log(e)
     e.preventDefault();
     root.innerHTML= `<h3 class='load' > Loading... </h3>`;
 
     const dataInfo = await getRecipeSearch(); 
-    console.log(dataInfo);   
     render(root,dataInfo,showSearchRecipes)
 
     // add listener to add favorite
@@ -113,7 +110,6 @@ async function addFavoriteListener(){
     const dataInfo = await getRecipeSearch();
     let btnFavorite = document.getElementsByClassName('btnFavorite');
     btnFavorite = Array.from(btnFavorite)
-    console.log(btnFavorite)    
     btnFavorite.forEach(btn =>{
     btn.addEventListener('click',e=>addFavoriteRecipe(dataInfo, e))
 })
@@ -133,9 +129,6 @@ function addFavoriteRecipe(dataInfo, event){
     
     const id = event.path[3].id;
     saveRecipeLs(dataInfo,id);
-    console.log(getRecipesFromLs());
-    console.log(event);
-    console.log(id);
     // obtain the button and add the class to change the color
     event.path[1].classList.toggle('favorite');
     // each time that a recipe is added   it is show the new list again
@@ -170,9 +163,11 @@ function changeText(e){
 
 
 function listenerRecipeDetail(){
+
    
     const infos = [ nutrition[0],ingridients[0],instructions[0]];
-    console.log(infos)
+    let show = Array.from(instructions[0].childNodes)
+    show[0].classList.add('hidden')
     infos.forEach(info => {
         info.addEventListener('click' , e=>{
             changeText(e)
