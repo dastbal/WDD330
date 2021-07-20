@@ -32,7 +32,7 @@ import {
     
     
 async function getJSON(){
-    const API = 'https://api.spoonacular.com/recipes/complexSearch?apiKey=3f11ab0861ed41e8b7f471057acf8013&query=';
+    const API = 'https://api.spoonacular.com/recipes/complexSearch?apiKey=50beb9fb40e8402697ce61fdd4dcb28f&query=';
 
     const response = await fetch(API);
     const data = await  response.json();
@@ -48,7 +48,7 @@ const data = await getJSON();
 
 async function getRecipeSearch(){
     
-    const API = `https://api.spoonacular.com/recipes/complexSearch?apiKey=3f11ab0861ed41e8b7f471057acf8013&query=`;
+    const API = `https://api.spoonacular.com/recipes/complexSearch?apiKey=50beb9fb40e8402697ce61fdd4dcb28f&query=`;
     
     const searchInput = document.getElementById('searchInput').value;
     
