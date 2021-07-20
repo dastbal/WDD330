@@ -9,28 +9,28 @@ import {
     saveLastRecipeLs,
     getLastRecipesFromLs,
     getNameRecipeById,
-    } from './Recipe.js'
+} from './Recipe.js'
 import { 
     showSearchInput ,
     createFavoriteRecipes, 
     createSearchRecipes, 
     createRecipeDetail } from './RecipeViews.js'
-
-
-const root = document.getElementById('container')
-const containerSearch = document.getElementById('containerSearch')
-const favoriteContainer = document.createElement('div')
-const nutrition = document.getElementsByClassName('nutrition');
-const ingridients = document.getElementsByClassName('ingridients');
-const instructions = document.getElementsByClassName('instructions');
-favoriteContainer.classList.add('favoriteRecipes')
-
-
-window.addEventListener('load',showSearchInput)
-window.addEventListener('load',showFavoriteRecipes)
-
-
-
+    
+    
+    const root = document.getElementById('container')
+    const containerSearch = document.getElementById('containerSearch')
+    const favoriteContainer = document.createElement('div')
+    const nutrition = document.getElementsByClassName('nutrition');
+    const ingridients = document.getElementsByClassName('ingridients');
+    const instructions = document.getElementsByClassName('instructions');
+    favoriteContainer.classList.add('favoriteRecipes')
+    
+    
+    window.addEventListener('load',showSearchInput)
+    window.addEventListener('load',showFavoriteRecipes)
+    
+    
+    
 async function getJSON(){
     const API = 'https://api.spoonacular.com/recipes/complexSearch?apiKey=3f11ab0861ed41e8b7f471057acf8013&query=';
 
@@ -42,13 +42,20 @@ async function getJSON(){
 const data = await getJSON();
 
 //
-async function getRecipeSearch(){
-    const API = 'https://api.spoonacular.com/recipes/complexSearch?apiKey=3f11ab0861ed41e8b7f471057acf8013&query=';
 
+
+
+
+async function getRecipeSearch(){
+    
+    const API = `https://api.spoonacular.com/recipes/complexSearch?apiKey=3f11ab0861ed41e8b7f471057acf8013&query=`;
+    
     const searchInput = document.getElementById('searchInput').value;
+    
     const URL = `${API+searchInput}`
     const response = await fetch(URL);
     const data = await  response.json();
+    console.log(data)
     return data
     
 }
