@@ -40,7 +40,7 @@ const links =[
         url : "./week10/index.html"
     },
     {
-        label : " Healthy Recipes",
+        label : " Search Healthy Recipes App ",
         url : "./HelthyRecipes/index.html"
     },
 ]

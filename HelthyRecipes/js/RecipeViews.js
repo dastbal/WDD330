@@ -3,8 +3,11 @@
     searchInput.id='search';
     searchInput.innerHTML =`
     <button  class="search--header"> Search   <i class="fas fa-search"></i></button>    
-        <input placeholder="Search" id="searchInput" type="text" >`
-    containerSearch.append(searchInput);
+        <input placeholder="Search" id="searchInput" type="text" >
+        `
+    const span = document.createElement('span')
+    span.innerHTML ="<span id='error'></span>";        
+    containerSearch.append(searchInput,span);
     
 }
 
