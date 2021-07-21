@@ -90,8 +90,8 @@ function showSearchRecipes(element,dataInfo){
 // show Favorite recipes
 async function showFavoriteRecipes(){
     favoriteContainer.innerHTML= '';
-    favoriteContainer.innerHTML= '<h2>Favorite Recipes</h2>';
     const favoriterecipesInfo =  getRecipesFromLs();
+    if(favoriterecipesInfo.length>0){ favoriteContainer.innerHTML= '<h2>Favorite Recipes</h2>'; }
     // this   help do not  reate  nothing if the favorite recipes  array is empty
     if( favoriterecipesInfo.length != 0){
         const recipesCreated = createFavoriteRecipes(favoriterecipesInfo);
