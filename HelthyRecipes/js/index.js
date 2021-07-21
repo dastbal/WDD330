@@ -188,13 +188,10 @@ function listenerRecipeDetail(){
 async function showRecipeDetail(event){
     const id = event.path[2].id;
     const name = await getNameRecipeById(id);
-    console.log(name);
+    
     const nutrition = await getNutritionById(id);
-    console.log(nutrition);
     const ingridients = await getIngridientsById(id);
-    console.log(ingridients);
     const instrutions = await getInstructionsById(id);
-    console.log(instrutions);
     const recipeDetail = createRecipeDetail(id,name,nutrition,ingridients,instrutions);
     root.innerHTML = '';
     root.append(recipeDetail);

@@ -2,8 +2,8 @@
 
 :root {
     --blue: #1A759F;
-    --green: #52B69A;
-    --white: #ffffdd;
+    --green: #7c77ac56;
+    --white: #ffffff;
 }
 
 * {
@@ -40,6 +40,7 @@ body ,input[type='button'] {
     text-align: center;
     color: var(--blue);
     padding: 1rem 0;
+    
 }
 
 #favoriteRecipes {
@@ -103,7 +104,7 @@ body ,input[type='button'] {
     border-radius: 50%;
     overflow: hidden ;
     background: rgb(255,255,255);
-    background: linear-gradient(90deg, rgb(255, 255, 255) 0%, rgb(161, 161, 161) 100%);
+    background: linear-gradient(90deg, rgb(255, 255, 255) 0%, rgb(95, 95, 95) 100%);
     position: relative;
     animation: turn 3s linear infinite;
 }
@@ -176,23 +177,23 @@ body ,input[type='button'] {
     height: 2.2rem;
     padding: 0.25rem;
     transition: all 0.3s ease;
-    box-shadow: 2px 2px 3px  rgba(0, 0, 0, 0.514);
+    box-shadow: 2px 2px 3px  rgba(0, 0, 0, 0.753);
     padding-left: 1rem;
     font-size: 1.5rem;
 }
 #search input:focus {
-    box-shadow: 3px 3px 15px 3px  rgba(0, 0, 0, 0.514);
+    box-shadow: 3px 3px 15px 3px  rgba(0, 0, 0, 0.527);
     outline: none;
     transform: scale(1.05,1.1);
 }
 #search input::placeholder {
-    color: rgba(223, 211, 211, 0.904);
+    color: rgba(231, 226, 226, 0.904);
     font-size: 1.5rem;
 }
 
 
 .recipe {
-    box-shadow: 3px 3px 15px 3px  rgba(0, 0, 0, 0.514);
+    box-shadow: 3px 3px 15px 3px  rgba(0, 0, 0, 0.233);
     background-color: var(--green);
     border-radius: 1rem;
     display: flex;
@@ -204,6 +205,7 @@ body ,input[type='button'] {
     margin: 0 5% 1.5rem;
 }
 .recipe:hover {
+    box-shadow: 3px 3px 15px 3px  rgba(0, 0, 0, 0.425);
     border-radius: 1.5rem;
     transform: scale(1.02);
     
@@ -277,6 +279,10 @@ input[type='button']{
     font-size: 1.8rem;
     
 }
+#full h2:hover{
+    color: white;
+    
+}
 #full li{
     list-style: none;
     margin: 0.15rem ;
@@ -284,6 +290,7 @@ input[type='button']{
 }
 
 .full--img {
+    margin-top: 1rem;
     align-self: center;
     display: block;
     width: 100%;
@@ -325,7 +332,7 @@ input[type='button']{
 }
 .full--container h2{
     background-color: var(--blue);
-    color:  white;
+    color:  black;
     font-weight: 100;
     cursor: pointer;
 }
@@ -437,7 +444,7 @@ text-align: center;}
     }
     .full--img {
         display: block;
-        width: 70%;
+        width: 100%;
         max-width: 900px;
     }
     
@@ -448,6 +455,10 @@ text-align: center;}
         grid-template-columns: 1fr 1fr 1fr 1fr;
      
     }
+    #btnBack{
+        left: 0;
+    }
+    
     
 
 }

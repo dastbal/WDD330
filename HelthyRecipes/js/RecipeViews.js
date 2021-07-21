@@ -116,7 +116,10 @@ const createInstructionsDetail = (instructi)=>{
     if(instructi.length == 0){
         const instructionsContainer = document.createElement('div');
     instructionsContainer.classList.add('instructions');
-    instructionsContainer.innerHTML =`<h2 class='title'>Instructions are not available</h2> `;
+    instructionsContainer.innerHTML =`<h2 class='title'>Instructions </h2> `;
+    const ul = document.createElement('ul');
+    ul.innerHTML =`Instructions are not available `;
+    instructionsContainer.append(ul);
     return instructionsContainer;
 
     }else{
@@ -131,7 +134,6 @@ const createInstructionsDetail = (instructi)=>{
         ul.innerHTML +=`<li>${number} - ${step}</li> `;
     });
     instructionsContainer.append(ul);
-    console.log(instructionsContainer)
     return instructionsContainer;
     }
 };
