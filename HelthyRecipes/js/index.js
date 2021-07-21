@@ -91,6 +91,7 @@ function showSearchRecipes(element,dataInfo){
 async function showFavoriteRecipes(){
     favoriteContainer.innerHTML= '';
     const favoriterecipesInfo =  getRecipesFromLs();
+    // only show the tile if exit info to show
     if(favoriterecipesInfo.length>0){ favoriteContainer.innerHTML= '<h2>Favorite Recipes</h2>'; }
     // this   help do not  reate  nothing if the favorite recipes  array is empty
     if( favoriterecipesInfo.length != 0){
